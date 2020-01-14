@@ -12,6 +12,7 @@ import { VarifyEmailComponent } from './login/varify-email/varify-email.componen
 import { SecureInnerPages } from './login/guard/secure-inner-pages.guard.ts.guard';
 import { AuthGuard } from './login/guard/auth.guard';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { ChatComponent } from './chat/chat.component';
 
 
 
@@ -30,7 +31,10 @@ const routes: Routes = [
   { path: 'register-user', component: SignupFormComponent  , canActivate:[SecureInnerPages] },
   { path: 'dashboard', component: ProfileComponent  , canActivate:[AuthGuard] },
   { path: 'forgot-password', component: ForgotPasswordComponent  , canActivate:[SecureInnerPages] },
-  { path: 'verify-email-address', component: VarifyEmailComponent  , canActivate:[SecureInnerPages] }
+  { path: 'verify-email-address', component: VarifyEmailComponent  , canActivate:[SecureInnerPages] },
+
+    //chat
+    { path: 'chat', component: ChatComponent  , canActivate:[AuthGuard] },
   ];
 
 @NgModule({

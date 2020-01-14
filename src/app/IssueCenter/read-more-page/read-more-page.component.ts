@@ -30,7 +30,7 @@ export class ReadMorePageComponent implements OnInit {
   path: string;
 
   constructor(
-    public  spy: jasmine.Spy,
+    // public  spy: jasmine.Spy,
     private route: ActivatedRoute,
     private afs: AngularFirestore,
     private afs1: AngularFirestore,
