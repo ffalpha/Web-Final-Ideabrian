@@ -1,0 +1,16 @@
+<app-navbar> </app-navbar>
+
+<div class="title">
+    Recent notifications
+</div>
+
+<div class="listContainer">
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let notification of notifications | async">
+            <div [ngClass]="{'unseen navigate': !notification.seen,navigate: notification.seen}" (click)="navigate(notification.url, notification.id)">
+                {{ notification.postedBy }} has posted an answer to your question on {{ notification.title }}
+                <div class="date">{{ notification.time }}</div>
+            </div>
+        </li>
+    </ul>
+</div>

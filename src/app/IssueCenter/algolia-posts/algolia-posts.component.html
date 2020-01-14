@@ -1,0 +1,38 @@
+<app-navbar></app-navbar>
+<div class="mainContainer">
+
+    <div class="buttonHolder">
+        <div class="newPostButton">
+            <button type="button" mdbBtn color="success" [routerLink]="routerLink" routerLinkActive="router-link-active" mdbWavesEffect>New issue</button>
+        </div>
+    </div>
+
+    <div class="titleOfPage">{{postCatagory}} </div>
+
+    <ais-instantsearch [config]="{
+              apiKey: '8b42308ab95e76f5520f09a2b135cb4f',
+              appId: '4OMR9ESZ2H',
+              indexName: databaseName,
+              routing: true
+            }">
+        <!--want to change  indexName: 'groupProjectAlgolia' according to the url parameter  -->
+
+        <div class="searchBar">
+            <ais-search-box></ais-search-box>
+        </div>
+
+
+        <div class="postGrandpa">
+            <div class="postContainersParent">
+                <ais-hits>
+                    <ng-template let-hits="hits">
+                        <div *ngFor="let hit of hits">
+                            <app-post [name]="hit.data.name" [url]="hit.data.profilePic" [content]="hit.data.body" [date]="hit.data.date" [solved]="hit.data.status" [id]="hit.objectId" [title]="hit.data.title" [uuid]="hit.data.uuid" [category]="hit.data.category"></app-post>
+                        </div>
+                    </ng-template>
+                </ais-hits>
+            </div>
+        </div>
+
+    </ais-instantsearch>
+</div>

@@ -1,0 +1,12 @@
+<p>post-holder works!</p>
+<br> 
+<div class="postGrandpa">
+    <div class="postContainersParent" > 
+ 
+            <div class="postContainers" *ngFor="let post of posts">
+                <app-post [name]="post[0]" [url]="post[1]"  [content]="post[2]"  [rating]="post[3]" [date]="post[4]" [solved]="post[5]" [id]="post[6]" [title]="post[7]"></app-post>
+            </div>
+
+    </div> 
+
+</div>

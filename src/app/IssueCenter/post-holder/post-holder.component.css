@@ -1,0 +1,13 @@
+.postContainer{     
+    display: none !important;
+    text-align: left !important;
+}
+
+.postContainersParent{
+    display: inline-block; 
+}
+
+
+.postGrandpa{    
+    text-align: center;
+}
