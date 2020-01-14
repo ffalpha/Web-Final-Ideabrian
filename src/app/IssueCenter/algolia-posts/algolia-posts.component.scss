@@ -1,0 +1,62 @@
+.postContainer{     
+    display: none !important;
+    text-align: left !important;
+}
+
+.postContainersParent{
+    display: inline-block; 
+    margin-top:0px;
+    /*
+    max-width: 100%;
+    overflow-x: hidden;
+    */
+}
+
+
+.postGrandpa{    
+    text-align: center;
+}
+
+.modifyButton{
+    border-radius:4px !important;
+}
+
+.modifyButton:hover{
+ -webkit-transition-duration: 0.3s!important; 
+    -moz-transition-duration: 0.3s!important;
+      -o-transition-duration: 0.3s!important;
+         transition-duration: 0.3s!important;
+}
+
+.newPostLink{
+    position: relative;
+    left:80%;
+}
+
+
+ 
+.searchBar{
+    opacity: 0.9 !important;  
+    width:600px;
+    margin: auto;
+}
+
+.titleOfPage{
+    text-align: center; 
+    margin: 50px;
+    font-size: 30pt;
+    font-family: 'nunitosemibold';
+}
+
+.newPostButton{
+    position: relative; 
+    width:148px; 
+    display: inline-block;
+    right:100px;
+    top:40px;
+}
+
+.buttonHolder{
+    text-align: right;
+
+}

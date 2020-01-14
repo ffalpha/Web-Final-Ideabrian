@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'nunitoextralight';
+    src: url('../src/assets/fonts/nunito-extralight.woff2') format('woff2'),
+         url('../src/assets/fonts/nunito-extralight.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'nunitolight';
+    src: url('../src/assets/fonts/nunito-light.woff') format('woff2'),
+         url('../src/assets/fonts/nunito-light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'nunitoregular';
+    src: url('../src/assets/fonts/nunito-regular.woff2') format('woff2'),
+         url('../src/assets/fonts/nunito-regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'nunitosemibold';
+    src: url('../src/assets/fonts/nunito-semibold.woff2') format('woff2'),
+         url('../src/assets/fonts/nunito-semibold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}

@@ -1,0 +1,58 @@
+<div class="body">
+    <app-navbar></app-navbar>
+
+
+    <div class="postContainer">
+        <div class="post-box">
+
+            <div class="banner">
+                <img src="{{image}}" class="bannerImage">
+            </div>
+
+            <div class="pic">
+                <img class="img" src="{{profilePic}}">
+            </div>
+
+            <div class="titleBarContents">
+                <div class="name">{{name}} </div>
+                <div class="date"> {{date}}</div>
+            </div>
+
+            <div class="solvedStatus">{{solved}}</div>
+
+            <div class="title">
+                {{title}}
+            </div>
+
+            <div class="postBody">
+                <h6>
+                    <p [innerHTML]="body"></p>
+                </h6>
+            </div>
+        </div>
+
+
+        <div class="answerTitle">
+            <div class="answerTitleText">Answers</div>
+            <hr>
+        </div>
+
+        <div *ngFor="let item of comments  ">
+            <app-answer imagePath={{item.profilePic}} ansName={{item.name}} ansDate={{item.date}} desc={{item.desc}}></app-answer>
+        </div>
+
+        <div class="writeAnswer">
+            <div class="md-form">
+                <textarea type="text" id="form7" [formControl]="newComment" class="md-textarea form-control" maxlength="1000" mdbInput></textarea>
+                <label for="form7">My answer is : </label>
+            </div>
+            <button (click)="insertDocument()" class="btn btn-success waves-effect waves-light">Post as answer </button>
+
+        </div>
+
+
+
+    </div>
+</div>
+
+<button (click)="refresh()"></button>

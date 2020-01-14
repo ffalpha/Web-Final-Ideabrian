@@ -1,0 +1,31 @@
+.listContainer {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 10%;
+}
+
+.unread {
+    background-color: rgb(192, 192, 192);
+}
+
+.title {
+    font-size: 20px;
+    margin-left: 10%;
+    margin-top: 5%;
+    margin-bottom: 2%;
+}
+
+.date {
+    text-align: right;
+    position: relative;
+}
+
+.unseen {
+    font-weight: 500!important;
+}
+
+.navigate {
+    cursor: pointer!important;
+}

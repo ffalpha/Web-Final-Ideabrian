@@ -1,0 +1,67 @@
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color" [containerInside]="false">
+
+    <!-- Navbar brand -->
+    <mdb-navbar-brand>
+        <div class="postionLogo">
+            <div class="navbar-brand">Idea Brain</div>
+        </div>
+    </mdb-navbar-brand>
+    <!-- Collapsible content -->
+
+
+
+    <!-- Links -->
+    <div class="alignLinks">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a href="/cat" routerLinkActive="router-link-active" class="nav-link waves-light" mdbWavesEffect>Issue center</a>
+            </li>
+            <div class="alignItem">
+                <li class="nav-item">
+                    <div class="nav-link waves-light" mdbWavesEffect>resource center</div>
+                </li>
+            </div>
+        </ul>
+    </div>
+
+    <!-- Links -->
+    <div class="profileIcon">
+        <ul class="navbar-nav ml-auto nav-flex-icons">
+
+            <li class="nav-item">
+
+                <a href="/dashboard" routerLinkActive="router-link-active" class="nav-link">
+                    profile&nbsp;<i class="far fa-user-circle"></i>
+                </a>
+            </li>
+
+            <div class="devider">
+                |
+            </div>
+
+            <li class="nav-item">
+                <a href="/not" routerLinkActive="router-link-active" class="nav-link">
+                      Notifications&nbsp;
+                      <i [className]="newNotifications   ? 'fas fa-bell' : 'far fa-bell'"></i> <!-- Change icon if there are new notifications  -->
+                </a>
+            </li>
+
+            <div class="devider">
+                |
+            </div>
+
+            <li class="nav-item">
+                <a class="nav-link" (click)="auth.SignOut()">
+                logout&nbsp;<i class="fas fa-sign-out-alt"></i>
+            </a>
+
+            </li>
+
+        </ul>
+    </div>
+    <!-- Collapsible content -->
+    <button (click)="createNotification('message')"></button>
+</mdb-navbar>
+<!--/.Navbar-->
+<simple-notifications></simple-notifications>
