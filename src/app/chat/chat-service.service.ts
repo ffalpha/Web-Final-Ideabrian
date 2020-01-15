@@ -9,18 +9,18 @@ export class ChatServiceService {
 
 
 
-  getallChats(){
-    this.threadCollection= this.firestore.collection('chats')
-    return this.threadCollection.snapshotChanges().pipe(
-      map(actions => {
-         return actions.map(a => {
-          const data = a.payload.doc.data() as Thread;
-          const id = a.payload.doc.id;
-          return { id, ...data };
-        });
-      })
-    );
-  }
+//   getallChats(){
+//     this.threadCollection= this.firestore.collection('chats')
+//     return this.threadCollection.snapshotChanges().pipe(
+//       map(actions => {
+//          return actions.map(a => {
+//           const data = a.payload.doc.data() as Thread;
+//           const id = a.payload.doc.id;
+//           return { id, ...data };
+//         });
+//       })
+//     );
+//   }
 }
 
 
