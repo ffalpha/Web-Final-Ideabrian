@@ -54,7 +54,7 @@ export class AuthService {
       this.userData = user;
       localStorage.setItem('user', JSON.stringify(this.userData.uid));
       JSON.parse(localStorage.getItem('user'));
-      console.log(user);
+      console.log(user + "reset password request");
     } else {
       localStorage.setItem('user', null);
       JSON.parse(localStorage.getItem('user'));
@@ -131,7 +131,7 @@ export class AuthService {
       this.SetUserData(result.user);
       console.log( JSON.stringify(result.user) );
     }).catch((error) => {
-      window.alert(error)
+      window.alert(error);/// change the alert if needed
     })
   }
 
