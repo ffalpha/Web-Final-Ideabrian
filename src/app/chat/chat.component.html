@@ -45,7 +45,7 @@
       <div class="col-9 px-0">
         <div class="px-4 py-5 chat-box bg-white">
           <div *ngFor="let chat of chats | async">
-            <div *ngIf="chat.id != '123'; else elseBlock">
+            <div *ngIf="chat.uid != '123'; else elseBlock">
               <!-- Reciever Message-->
               <div class="media w-50 ml-auto mb-3">
                 <div class="media-body">
