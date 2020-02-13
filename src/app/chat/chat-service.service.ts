@@ -5,6 +5,7 @@ import {
   AngularFirestoreCollection
 } from "@angular/fire/firestore";
 import { map } from 'rxjs/operators';
+import {UserDetailsService} from '../common/user-details.service'
 export interface Chat {
   message: string;
   displayname: string;
@@ -12,6 +13,8 @@ export interface Chat {
   uid: string;
   time:string;
 }
+
+var user:any;
 @Injectable({
   providedIn: 'root'
 })
@@ -19,6 +22,7 @@ export class ChatServiceService {
   chatCollection:AngularFirestoreCollection<Chat>;
   constructor(
     private firestore: AngularFirestore,
+    private user:UserDetailsService
   ) { }
 
 
@@ -26,11 +30,19 @@ export class ChatServiceService {
     // var id = this.currrentUserId()?this.currrentUserId():""; //geting current userId
     // var email = this.afAuth.auth.currentUser.email?this.afAuth.auth.currentUser.email:"";
     
+
+    this.user.getUser().subscribe(
+      async doc => { 
+          user = await doc.data();  
+          
+      }
+    );
+    console.log(user);
     let chat = {
      
       message: chatObj["Msg"],
-      displayname: "Kalana",
-      profilepic: "https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg",
+      displayname: user.displayName,
+      profilepic: user.photoURL,
       uid:"123",
       time: new Date()
     };

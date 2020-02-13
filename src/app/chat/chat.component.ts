@@ -12,6 +12,8 @@ export class ChatComponent implements OnInit {
   chats:any;
 
   ngOnInit() {
+    this.getall();
+
   }
   public chatforum=new FormGroup({
     Msg:new FormControl('',Validators.required),
@@ -21,6 +23,17 @@ export class ChatComponent implements OnInit {
     //send message
   public async sendmsg(formData:Chat){
     console.log(formData['Msg']);
-    await this.chatservice.sendmessage(formData);
+    await this.chatservice.sendmessage(formData);  
+  }
+  // onSendmsg(){
+  //   if(this.chatforum.valid){
+  //     console.log("msgsent", this.sendmsg.value);
+  //   }
+  // }
+
+   //geting all chats
+   getall(){
+    this.chats =this.chatservice.getallChats() ;
+    
   }
 }
