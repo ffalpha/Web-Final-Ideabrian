@@ -24,6 +24,7 @@ export class UploadFormComponent implements OnInit {
 currentUpload: Upload;
 categ: string;
 imageList: any[];
+hasini: any[];
 rowIndexArray: any[];
 
 formTemplate = new FormGroup({
