@@ -14,12 +14,23 @@ export interface Chat {
   time:string;
 }
 
+export interface User {
+  displayName: string;
+  email: string;
+  photoURL: string;
+  emailVerified:string;
+  loggedWith:string;
+  uid:string;
+  
+}
+
 var user:any;
 @Injectable({
   providedIn: 'root'
 })
 export class ChatServiceService {
   chatCollection:AngularFirestoreCollection<Chat>;
+  userCollection:AngularFirestoreCollection<User>;
   constructor(
     private firestore: AngularFirestore,
     private user:UserDetailsService
@@ -29,9 +40,7 @@ export class ChatServiceService {
   public async sendmessage(chatObj: Chat) {
     // var id = this.currrentUserId()?this.currrentUserId():""; //geting current userId
     // var email = this.afAuth.auth.currentUser.email?this.afAuth.auth.currentUser.email:"";
-    
-
-
+  
     let chat = {
       from: "Kalana",
       uid:"1123",
@@ -58,6 +67,21 @@ export class ChatServiceService {
       })
     );
   }
+
+
+
+getallUsers(){
+  this.userCollection= this.firestore.collection('users')
+  return this.userCollection.snapshotChanges().pipe(
+    map(actions => {
+       return actions.map(a => {
+        const data = a.payload.doc.data() ;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      });
+    })
+  );
+}
 }
 
 
