@@ -31,22 +31,15 @@ export class ChatServiceService {
     // var email = this.afAuth.auth.currentUser.email?this.afAuth.auth.currentUser.email:"";
     
 
-    this.user.getUser().subscribe(
-      async doc => { 
-          user = await doc.data();  
-          
-      }
-    );
-    console.log(user);
+
     let chat = {
-     
+      from: "Kalana",
+      uid:"1123",
       message: chatObj["Msg"],
-      displayname: user.displayName,
-      profilepic: user.photoURL,
-      uid:"123",
-      time: new Date()
+      photoUrl: "https://firebasestorage.googleapis.com/v0/b/ideabrain-d419f.appspot.com/o/profilePics%2FMauro-profile-picture.jpg?alt=media&token=7f932b54-e65f-4d6d-94b0-1c56e316a4f5",
+      createdAt: new Date()
     };
-    console.log("asffssf");
+   
     await this.firestore.collection("chats").add(chat);
    
   

@@ -7,7 +7,7 @@ import {GalleryComponent} from './gallery/gallery.component'
 import {FileviewComponent} from './fileview/fileview.component'
 
 const routes: Routes = [
-  { path: "", component: HomeComponent},
+  { path: "", component: HomeComponent,},
   { path: 'upload-form', component: UploadFormComponent },
   { path: 'gallery', component: GalleryComponent },
   { path: 'fileview', component: FileviewComponent },
