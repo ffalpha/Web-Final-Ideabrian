@@ -47,7 +47,7 @@ export class ChatServiceService {
 
 
   getallChats(){
-    this.chatCollection= this.firestore.collection('chats')
+    this.chatCollection= this.firestore.collection('chats',ref => ref.orderBy('createdAt', 'asc'))
     return this.chatCollection.snapshotChanges().pipe(
       map(actions => {
          return actions.map(a => {
