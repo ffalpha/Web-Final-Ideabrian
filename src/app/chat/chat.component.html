@@ -1,6 +1,4 @@
 
-
-
 <div class="bgImgCenter">
   <div class="container py-5 px-6">
     <!-- For demo purpose-->
@@ -46,25 +44,25 @@
       <!-- Chat Box-->
       <div class="col-9 px-0">
         <div class="px-4 py-5 chat-box bg-white">
-          <!-- <div *ngFor="let chat of chats | async"> -->
-            <!-- <div *ngIf="chat.id != '123'; else elseBlock"> -->
+          <div *ngFor="let chat of chats | async">
+            <div *ngIf="chat.id != '123'; else elseBlock">
               <!-- Reciever Message-->
               <div class="media w-50 ml-auto mb-3">
                 <div class="media-body">
                   <div class="bg-primary rounded py-2 px-3 mb-2">
                     <p class="text-small mb-0 text-white">
-                      dfs
+                      {{chat.message}}
+                    
                     </p>
                   </div>
-                  <p class="small text-muted">12:00 PM | Aug 13</p>
+                  <p class="small text-muted ar">{{chat.time.toDate() | date:'yyyy/MM/dd h:mm:ss a'}}</p>
                 </div>
               </div>
-            <!-- </div> -->
-            <!-- <ng-template #elseBlock
-              > -->
-              <div class="media w-50 mb-3">
+            </div>
+            <ng-template #elseBlock
+              ><div class="media w-50 mb-3">
                 <img
-                  src="https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg"
+                  src="{{chat.profilepic}}"
                   alt="user"
                   width="50"
                   class="rounded-circle"
@@ -72,14 +70,14 @@
                 <div class="media-body ml-3">
                   <div class="bg-light rounded py-2 px-3 mb-2">
                     <p class="text-small mb-0 text-muted">
-                      sfa
+                      {{chat.message}}
                     </p>
                   </div>
-                  <p class="small text-muted">12:00 PM | Aug 13</p>
+                  <p class="small text-muted al ">{{chat.time.toDate() | date:'yyyy/MM/dd h:mm:ss a'}}</p>
                 </div>
-              </div>
-              <!-- </ng-template> -->
-          <!-- </div> -->
+              </div></ng-template
+            >
+          </div>
         </div>
   
         <!-- Typing area -->
@@ -92,10 +90,12 @@
               aria-describedby="button-addon2"
               class="form-control rounded-0 border-0 py-4 bg-light"
             />
+            
             <div class="input-group-append">
               <button id="button-addon2" type="submit" class="btn btn-link">
                 <i class="fa fa-paper-plane"></i>
               </button>
+              
             </div>
           </div>
         </form>
