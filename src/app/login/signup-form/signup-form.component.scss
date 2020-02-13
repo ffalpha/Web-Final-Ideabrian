@@ -1,23 +1,33 @@
-body {
-    background: #c8c8c8!important;
+ 
+
+.upperArea{
+    height:200px;
 }
 
-.formContainer {
-    width: 30%;
-    height: 30%;
+body{
+    background:#c8c8c8!important;
+}
+ 
+ 
+.formContainer{
+    width:400px;
     margin: auto;
     background-color: #fff!important;
-    box-shadow: 0 0 40px rgba(0, 0, 0, .05);
+    box-shadow: 0 0 40px rgba(0,0,0,.05);
     border: 0px!important;
     border-radius: 15px!important;
 }
 
-.googleIcon {
-    text-align: center;
+.googleIcon{  
+    text-align: center; 
     color: black;
 }
-
-.upperArea {
-    height: 10%;
-    padding-top: 5%;
+.upperArea{
+    height:200px;
 }
+
+
+.body{ 
+    background-color: #f7f9fb!important;
+    height: 100%;
+} 

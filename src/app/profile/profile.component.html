@@ -1,89 +1,93 @@
-
-
+<app-navbar></app-navbar>
 <div class="heightContainer"></div>
-<div *ngIf="userObject as user"> 
+<div *ngIf="userObject as user">
 
-   
-  <div class="profileText"> <h1> Profile</h1> </div>
 
-    <div class="ruler"><hr></div>
-          <div class="imageContainer">
-            <img class="pic" src="{{(user.photoURL) ? user.photoURL : '/assets/img/dummy-user.png'}}" alt="{{user.displayName}}">
-          </div>
-       
+    <div class="profileText">
+        <h1> Profile</h1>
+    </div>
 
- <div class="detailContainer">
-    <p>User name: <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></p> 
-    <p>Email: <strong>{{user.email}}</strong></p> 
+    <div class="ruler">
+        <hr>
+    </div>
+    <div class="imageContainer">
+        <img class="pic" src="{{(user.photoURL) ? user.photoURL : '/assets/img/dummy-user.png'}}" alt="{{user.displayName}}">
+    </div>
 
-    <a class="nav-link a1"  (click)="basicModal.show();setInputBox();">
-        <mdb-icon fas icon="user-edit"></mdb-icon>&nbsp;&nbsp;&nbsp;  change username
-    </a>
 
-    
-    <a class="nav-link a"   (click)="basicModal1.show()">
-        <mdb-icon fas icon="camera"> </mdb-icon>&nbsp;&nbsp;&nbsp;  change image
-    </a>
-    
-    <a class="nav-link a2"   (click)="authService.SignOut()">
-        <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;&nbsp;  Log out
-    </a>
-  
- </div>
- 
-             
+    <div class="detailContainer">
+        <p>User name: <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></p>
+        <p>Email: <strong>{{user.email}}</strong></p>
+
+        <a class="nav-link a1" (click)="basicModal.show();setInputBox();">
+            <mdb-icon fas icon="user-edit"></mdb-icon>&nbsp;&nbsp;&nbsp; change username
+        </a>
+
+
+        <a class="nav-link a" (click)="basicModal1.show()">
+            <mdb-icon fas icon="camera"> </mdb-icon>&nbsp;&nbsp;&nbsp; change image
+        </a>
+
+        <a class="nav-link a2" (click)="authService.SignOut()">
+            <i class="fas fa-sign-out-alt"></i>&nbsp;&nbsp;&nbsp; Log out
+        </a>
+
+    </div>
+
+
 </div>
 
 
-<!--Change name model--> 
+<!--Change name model-->
 <div mdbModal #basicModal="mdbModal" class="modal fade top" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
           <span aria-hidden="true">×</span>
         </button>
-        <h4 class="modal-title w-100" id="myModalLabel">Enter a new user name </h4>
-      </div>
-      <div class="modal-body">
-          <form [formGroup]="changeName">
-              <input type="text" formControlName="newName">
-          </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
-        <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="setUserName();basicModal.hide()" mdbWavesEffect>Save changes</button>
-        
-      </div>
+                <h4 class="modal-title w-100" id="myModalLabel">Enter a new user name </h4>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="changeName">
+                    <input type="text" formControlName="newName">
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
+                <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="setUserName();basicModal.hide()" mdbWavesEffect>Save changes</button>
+
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 
-<!--Change image model--> 
+<!--Change image model-->
 <div style="overflow: hidden;">
-<div mdbModal #basicModal1="mdbModal" class="modal fade bottom" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal1.hide()">
+    <div mdbModal #basicModal1="mdbModal" class="modal fade bottom" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal1.hide()">
           <span aria-hidden="true">×</span>
         </button>
-        <h4 class="modal-title w-100" id="myModalLabel">Change photo</h4>
-      </div>
-      <div class="modal-body">
-          <form [formGroup]="changePhoto" >
-              <input type="file" name="image" formControlName="newImage" (change)="onFileChange($event)" > 
-              <label for="newImage">Image size should be less than 1mb</label>
-          </form>
-  
- 
-      </div>
-      <div class="modal-footer">
-        <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal1.hide()" mdbWavesEffect>Close</button>
-        <button type="submit" mdbBtn color="primary" class="relative waves-light" (click)="setPhoto();basicModal1.hide()" mdbWavesEffect>Save changes</button>
-        
-      </div>
+                    <h4 class="modal-title w-100" id="myModalLabel">Change photo</h4>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="changePhoto">
+                        <input type="file" name="image" formControlName="newImage" (change)="onFileChange($event)">
+                        <label for="newImage">Image size should be less than 1mb</label>
+                    </form>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal1.hide()" mdbWavesEffect>Close</button>
+                    <button type="submit" mdbBtn color="primary" class="relative waves-light" (click)="setPhoto();basicModal1.hide()" mdbWavesEffect>Save changes</button>
+
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div></div>
+</div>
