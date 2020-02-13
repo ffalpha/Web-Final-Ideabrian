@@ -13,7 +13,7 @@
               <div>
                 <h3 class="card-title py-3 font-weight-bold"><strong>Upload</strong></h3>
                 <p class="pb-3">Click here to upload images,files and videos.</p>
-                <a mdbBtn type="button" mdbBtn color="secondary" rounded="true" mdbWavesEffect href="/upload-form">
+                <a mdbBtn type="button" mdbBtn color="secondary" rounded="true" [routerLink]="['upload-form']">
                   <mdb-icon fas icon="clone" class="left"></mdb-icon> Upload
                 </a>
               </div>
@@ -29,30 +29,16 @@
               <div>
                 <h3 class="card-title py-3 font-weight-bold"><strong>Gallery</strong></h3>
                 <p class="pb-3">Click here to view gallery.</p>
-                <a mdbBtn color="pink" rounded="true" mdbWavesEffect href="/gallery">
+                <a mdbBtn color="pink" rounded="true" [routerLink]="['gallery']">
                   <mdb-icon fas icon="clone" class="left"></mdb-icon> Gallery
                 </a>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-danger">Gallery new</button>
-                  <button type="button" class="btn btn-danger dropdown-toggle px-3" data-toggle="dropdown" aria-haspopup="true"
-                    aria-expanded="false">
-                    <span class="sr-only">Toggle Dropdown</span>
-                  </button>
-                  <div class="dropdown-menu">
-                    <a class="dropdown-item" href="/gallery">Agriculture and cropes</a>
-                    <a class="dropdown-item" href="/gallery">Health and fitness</a>
-                    <a class="dropdown-item" href="/gallery">Education</a>
-                    <a class="dropdown-item" href="/gallery">Science and technology</a>
-                    <a class="dropdown-item" href="/gallery">Money and finance</a>
-                    <a class="dropdown-item" href="/gallery">Vehicle and transport</a>
-                  </div>
-                </div>
+           
              </div>
             </div>
           </mdb-card>
         </div>
         <!--Grid column-->
-    
+     
         <!--Grid column-->
         <div class="col-md-6 mb-4">
           <mdb-card style="background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20%2873%29.jpg')">
@@ -60,7 +46,7 @@
               <div>
                 <h3 class="card-title py-3 font-weight-bold"><strong>Files</strong></h3>
                 <p class="pb-3">Click here to view files.</p>
-                <a mdbBtn color="success" rounded="true" mdbWavesEffect href="/fileview">
+                <a mdbBtn color="success" rounded="true" [routerLink]="['fileview']">
                   <mdb-icon fas icon="clone" class="left"></mdb-icon>Files
                 </a>
               </div>
