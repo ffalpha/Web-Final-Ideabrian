@@ -217,6 +217,8 @@ export class PostWriterComponent implements OnInit {
 
           //image is placed under the folder at the catagory selection
           const uniqueID = uuid.v4();
+          const user = JSON.parse(localStorage.getItem('user'));
+          const uid = user['uid'].replace('"', "").replace('"', "") 
           const post = {
             //uploader related data
             name: this.userObject["displayName"],  
@@ -229,7 +231,7 @@ export class PostWriterComponent implements OnInit {
             image: result, // this should be the image of the uploader but currently it's the image  related  to the post
             category: this.databaseName,
             uuid: uniqueID,
-            userID: localStorage.getItem('user').replace('"', "").replace('"', "") ,//uid of the writer
+            userID: uid ,//uid of the writer
             comments: {0 : 0}
           };
 

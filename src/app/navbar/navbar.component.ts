@@ -24,11 +24,13 @@ export class NavbarComponent {
   notificationsCollection: AngularFirestoreCollection<Notification>;
 
   constructor(public afs: AngularFirestore,private notify: NotificationsService,private router: ActivatedRoute,private auth: AuthService) {
-    this.usersUID = localStorage.getItem("user").replace('"', "").replace('"', "");  
+   
+    const user = JSON.parse(localStorage.getItem('user'));
+    this.usersUID = user['uid'].replace('"', "").replace('"', "")   
     this.newNotifications = false;
     this.notificationCollection = afs.collection<Notification>(`Notifications/${this.usersUID}/${this.usersUID}/`); //5xmXcPPVmPgWi4uttnN2v6rrMmD2/fEsNdG9LaHNPK2f3LYuH/
     this.notification = this.notificationCollection.valueChanges();
-    console.log(this.usersUID);
+    //console.log(this.usersUID);
     
     //don't display notifications in the detailed notification page
     if (this.router.pathFromRoot.toString() =="Route(url:'', path:''),Route(url:'not', path:'not')"){

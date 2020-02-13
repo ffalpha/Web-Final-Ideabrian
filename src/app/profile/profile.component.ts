@@ -33,9 +33,9 @@ export class ProfileComponent implements OnInit {
     this.changePhoto = new FormGroup({
       newImage: new FormControl("")
     });
-
-    const uid1 = localStorage.getItem("user");
-    this.uid = uid1.replace('"', "").replace('"', ""); //removed blockQuotes
+ 
+    const user = JSON.parse(localStorage.getItem('user'));
+    this.uid = user['uid'].replace('"', "").replace('"', "") 
     this.updateUserData();
   }
 

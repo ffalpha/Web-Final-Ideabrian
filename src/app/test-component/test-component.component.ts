@@ -9,11 +9,8 @@ export class TestComponentComponent implements OnInit {
  userDetails:any;
   constructor(userService:UserDetailsService) {
   
-   userService.getUser().subscribe(async doc => {
-      this.userDetails = await doc.data();
-    });
-
-    console.log(JSON.stringify(this.userDetails,null,2));
+     
+   
    }
   ngOnInit() {}
 }

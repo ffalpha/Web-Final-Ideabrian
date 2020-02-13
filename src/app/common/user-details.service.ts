@@ -13,20 +13,17 @@ export class UserDetailsService {
   constructor (private afs:AngularFirestore){
       firebase.auth().onAuthStateChanged(
         user=>{
-            console.log(JSON.stringify(user,null,2)); 
+        //    console.log(JSON.stringify(user,null,2)); 
             this.uid = user.uid;
           } 
       );
    } 
 
   getUser(){ 
-      if(localStorage.getItem('user')==  this.uid ){
-        const uidLocal = this.uid.replace('"',"").replace('"',""); 
-        console.log(uidLocal);
-        return this.afs.collection("users").doc(uidLocal).get()
-      }else{
-        localStorage.setItem('user', null);//log out if any change detected
-      }
+    const user = JSON.parse(localStorage.getItem('user')); 
+    const uid = user.replace('"',"").replace('"',""); 
+    return this.afs.collection("users").doc(uid).get()
+     
     }
 
   //getting user details from another user
