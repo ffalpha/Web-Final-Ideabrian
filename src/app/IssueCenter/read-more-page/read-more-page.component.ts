@@ -3,7 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { AngularFirestore } from "angularfire2/firestore";
 import { FormControl } from "@angular/forms";
 import { UserDetailsService } from "../../common/user-details.service";
-
+import * as firebase from 'firebase/app';
 import { Notification } from "../../common/Notification.interface";
 import * as uuid from "uuid";
 @Component({
@@ -12,6 +12,8 @@ import * as uuid from "uuid";
   styleUrls: ["./read-more-page.component.scss"]
 })
 export class ReadMorePageComponent implements OnInit {
+  
+
   
   
   documentObject: any; //real document
@@ -29,13 +31,21 @@ export class ReadMorePageComponent implements OnInit {
   //notification related
   path: string;
 
+  //set answer option related 
+  creater:any;
+  currentUserId:string;
+  solvable:boolean;
+  showButton:boolean;
+
   constructor(
     // public  spy: jasmine.Spy,
     private route: ActivatedRoute,
     private afs: AngularFirestore,
-    private afs1: AngularFirestore,
     private user: UserDetailsService
   ) {
+
+    firebase.auth().onAuthStateChanged(user=>{ this.currentUserId =  user.uid  });
+
     this.newComment = new FormControl("");
     this.user.getUser().subscribe(async doc => {
       this.userObject = await doc.data();
@@ -47,7 +57,12 @@ export class ReadMorePageComponent implements OnInit {
     });
     this.databaseName = this.route.snapshot.paramMap.get("category");
     this.uuid = this.route.snapshot.paramMap.get("uuid"); 
-    this.docRef = this.afs.collection(this.databaseName).doc(this.uuid);
+    this.docRef = this.afs.collection(this.databaseName).doc(this.uuid); 
+
+
+    //console.log( JSON.stringify(this.docRef,null,2));
+  
+  
   }
 
   getDate() {
