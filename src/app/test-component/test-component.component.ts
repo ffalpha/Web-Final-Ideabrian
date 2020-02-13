@@ -9,6 +9,8 @@ export class TestComponentComponent implements OnInit {
  userDetails:any;
   constructor(userService:UserDetailsService) {
   
+  
+       console.log(JSON.stringify(userService.getUser(),null,2))
      
    
    }
