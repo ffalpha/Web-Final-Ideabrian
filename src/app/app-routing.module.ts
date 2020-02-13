@@ -35,6 +35,10 @@ const routes: Routes = [
 
     //chat
     { path: 'chat', component: ChatComponent  , canActivate:[AuthGuard] },
+
+    //resource ceneter 
+    {path:"rccenter",loadChildren:()=>import("./rccenter/rccenter.module").then(m=>m.RccenterModule),canActivate:[AuthGuard]},
+  
   ];
 
 @NgModule({
