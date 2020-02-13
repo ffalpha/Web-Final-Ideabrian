@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { RccenterRoutingModule } from './rccenter-routing.module';
 import { FileviewComponent } from './fileview/fileview.component';
 import { GalleryComponent } from './gallery/gallery.component';
@@ -13,7 +13,8 @@ import { VideoviewComponent } from './videoview/videoview.component';
   declarations: [FileviewComponent, GalleryComponent, HomeComponent, UploadFormComponent, VideoviewComponent],
   imports: [
     CommonModule,
-    RccenterRoutingModule,MDBBootstrapModule 
+    RccenterRoutingModule,MDBBootstrapModule ,
+    ReactiveFormsModule
   ]
 })
 export class RccenterModule { }

@@ -81,7 +81,7 @@
         </div>
   
         <!-- Typing area -->
-        <form (ngSubmit)="sendmsg(chatforum.value)" [formGroup]="chatforum" class="bg-light">
+        <form (ngSubmit)="sendmsg(chatforum.value) ;chatforum.reset()"  [formGroup]="chatforum" class="bg-light">
           <div class="input-group">
             <input
               type="text"
