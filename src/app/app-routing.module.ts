@@ -13,7 +13,6 @@ import { SecureInnerPages } from './login/guard/secure-inner-pages.guard.ts.guar
 import { AuthGuard } from './login/guard/auth.guard';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ChatComponent } from './chat/chat.component';
-import { TestsComponent } from './tests/tests.component';
 
 
 
@@ -27,15 +26,12 @@ const routes: Routes = [
   //notofications 
   {path: 'not', component: NotificationsComponent },   
 
-  //test
-  {path: 't', component: TestsComponent },   
-
   //authentication related 
   { path: 'sign-in', component: LoginFormComponent  , canActivate:[SecureInnerPages]},
   { path: 'register-user', component: SignupFormComponent  , canActivate:[SecureInnerPages] },
   { path: 'dashboard', component: ProfileComponent  , canActivate:[AuthGuard] },
   { path: 'forgot-password', component: ForgotPasswordComponent  , canActivate:[SecureInnerPages] },
-  { path: 'verify-email-address', component: VarifyEmailComponent    },
+  { path: 'verify-email-address', component: VarifyEmailComponent  , canActivate:[SecureInnerPages] },
 
     //chat
     { path: 'chat', component: ChatComponent  , canActivate:[AuthGuard] },
