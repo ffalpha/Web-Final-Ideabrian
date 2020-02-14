@@ -5,6 +5,7 @@ import {
   AngularFirestoreCollection
 } from "@angular/fire/firestore";
 import { map } from 'rxjs/operators';
+import {UserDetailsService} from '../common/user-details.service'
 export interface Chat {
   message: string;
   displayname: string;
@@ -12,29 +13,42 @@ export interface Chat {
   uid: string;
   time:string;
 }
+
+export interface User {
+  displayName: string;
+  email: string;
+  photoURL: string;
+  emailVerified:string;
+  loggedWith:string;
+  uid:string;
+  
+}
+
+var user:any;
 @Injectable({
   providedIn: 'root'
 })
 export class ChatServiceService {
   chatCollection:AngularFirestoreCollection<Chat>;
+  userCollection:AngularFirestoreCollection<User>;
   constructor(
     private firestore: AngularFirestore,
+    private user:UserDetailsService
   ) { }
 
 
   public async sendmessage(chatObj: Chat) {
     // var id = this.currrentUserId()?this.currrentUserId():""; //geting current userId
     // var email = this.afAuth.auth.currentUser.email?this.afAuth.auth.currentUser.email:"";
-    
+  
     let chat = {
-     
+      from: "Kalana",
+      uid:"1123",
       message: chatObj["Msg"],
-      displayname: "Kalana",
-      profilepic: "https://res.cloudinary.com/mhmd/image/upload/v1564960395/avatar_usae7z.svg",
-      uid:"123",
-      time: new Date()
+      photoUrl: "https://firebasestorage.googleapis.com/v0/b/ideabrain-d419f.appspot.com/o/profilePics%2FMauro-profile-picture.jpg?alt=media&token=7f932b54-e65f-4d6d-94b0-1c56e316a4f5",
+      createdAt: new Date()
     };
-    console.log("asffssf");
+   
     await this.firestore.collection("chats").add(chat);
    
   
@@ -42,7 +56,7 @@ export class ChatServiceService {
 
 
   getallChats(){
-    this.chatCollection= this.firestore.collection('chats')
+    this.chatCollection= this.firestore.collection('chats',ref => ref.orderBy('createdAt', 'asc'))
     return this.chatCollection.snapshotChanges().pipe(
       map(actions => {
          return actions.map(a => {
@@ -53,6 +67,21 @@ export class ChatServiceService {
       })
     );
   }
+
+
+
+getallUsers(){
+  this.userCollection= this.firestore.collection('users')
+  return this.userCollection.snapshotChanges().pipe(
+    map(actions => {
+       return actions.map(a => {
+        const data = a.payload.doc.data() ;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      });
+    })
+  );
+}
 }
 
 

@@ -30,7 +30,6 @@
 
 
 
-
     <!--Preview model  -->
     <div mdbModal #basicModal="mdbModal" class="modal fade top" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-fluid modal-full-height modal-top" role="document">
@@ -64,9 +63,8 @@
 
 
     <!--Buttons -->
-    <div class="buttonBar">
+    <div class="buttonBar text-align-center">
         <button type="submit" name="SubmitButton" type="button" mdbBtn color="success" (click)="uploadNow()" mdbWavesEffect>Save post</button>
         <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect>Show document preview</button>
-        <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="userTest()" mdbWavesEffect>TEST</button>
     </div>
 </form>

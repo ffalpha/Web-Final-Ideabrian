@@ -41,8 +41,12 @@ const routes: Routes = [
 
   //home and static web pages 
   { path: 'home', component: HomePageComponent  },
-  //chat
-  { path: 'chat', component: ChatComponent  , canActivate:[AuthGuard] },
+ 
+    //chat
+    { path: 'chat', component: ChatComponent  , canActivate:[AuthGuard] },
+
+    //resource ceneter 
+    {path:"rccenter",loadChildren:()=>import("./rccenter/rccenter.module").then(m=>m.RccenterModule) },
   ];
 
 @NgModule({

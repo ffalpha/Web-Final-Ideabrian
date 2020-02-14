@@ -18,6 +18,14 @@
   .text-small {
     font-size: 0.9rem;
   }
+
+  .ar{
+    text-align: right;
+  }
+
+  .al{
+    text-align: left;
+  }
   
   .messages-box,
   .chat-box {
@@ -25,7 +33,10 @@
     overflow-y: scroll;
     width: auto;
   }
-  
+  ::-align {
+    align-self: right;
+  }
+
   .rounded-lg {
     border-radius: 0.5rem;
   }
