@@ -31,7 +31,7 @@ export class ReadMorePageComponent implements OnInit {
   path: string;
 
   //select answer related 
-  isOwner:boolean; uid:string;
+  haveToSolve:boolean; uid:string;
 
   constructor(
     // public  spy: jasmine.Spy,
@@ -81,7 +81,7 @@ export class ReadMorePageComponent implements OnInit {
           this.title = this.documentObject["title"];
           this.name = this.documentObject["name"];
           this.date = this.documentObject["date"];
-          this.solved = this.documentObject["solved"];
+          this.solved = this.documentObject["status"];
           this.body = this.documentObject["body"];
           this.uid = this.documentObject["uid"];
 
@@ -96,15 +96,18 @@ export class ReadMorePageComponent implements OnInit {
             arr_names[a - 1] = this.documentObject["comments"][a];
           }
 
-          //set the owner info
-          /*
-          if (this.uid===){
-            this.isOwner = true;
-          }
-*/
+          //set the solve button visibility status 
+          const user = JSON.parse(localStorage.getItem('user'));
+          const localuid = user['uid'].replace('"', "").replace('"', "")   
+          if ((this.uid===localuid ) && (! (this.solved==="solved") ) ){
+            this.haveToSolve = true;
+            console.log("I have to select answer ", this.solved ); 
+          }else{
+            this.haveToSolve = false;
+            console.log("I am not the owner of this question ");
+          } 
+ 
           this.comments = arr_names;
-
-
 
         } else {
           console.log("No such document!");
@@ -177,6 +180,11 @@ export class ReadMorePageComponent implements OnInit {
     //remove the value in input box
     this.newComment.setValue("");
     this.updateDocument();
+  }
+
+ 
+  selectAnswer($event){
+    this.haveToSolve = $event;
   }
 
 

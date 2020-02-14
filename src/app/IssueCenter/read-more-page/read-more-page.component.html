@@ -36,19 +36,19 @@
             <hr />
         </div>
 
-        <div *ngFor="let item of comments">
-            <app-answer imagePath="{{ item.profilePic }}" ansName="{{ item.name }}" ansDate="{{ item.date }}" desc="{{ item.desc }}"></app-answer>
+        <div *ngFor="let item of comments ; let i = index ">
+            <app-answer (visibilityEvent)="selectAnswer($event)" [imagePath]=" item.profilePic " [ansName]=" item.name " [ansDate]=" item.date " [desc]=" item.desc " [visibility]=" haveToSolve " [index]=" i + 1 " [uid]=" uuid " [category]="  databaseName "></app-answer>
         </div>
 
-        <div class="writeAnswer">
-            <div class="md-form">
-                <textarea type="text" id="form7" [formControl]="newComment" class="md-textarea form-control" maxlength="1000" mdbInput></textarea>
-                <label for="form7">My answer is : </label>
+        <div class="writeAnswer ">
+            <div class="md-form ">
+                <textarea type="text " id="form7 " [formControl]="newComment " class="md-textarea form-control " maxlength="1000 " mdbInput></textarea>
+                <label for="form7 ">My answer is : </label>
             </div>
-            <button (click)="insertDocument()" class="btn btn-success waves-effect waves-light">
+            <button (click)="insertDocument() " class="btn btn-success waves-effect waves-light ">
         Post as answer
       </button>
         </div>
     </div>
-    <div class="spacing"></div>
+    <div class="spacing "></div>
 </div>
