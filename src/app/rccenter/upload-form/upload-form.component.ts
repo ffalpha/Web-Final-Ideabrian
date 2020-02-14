@@ -23,12 +23,14 @@ export class UploadFormComponent implements OnInit {
   isSubmitted: boolean;
 currentUpload: Upload;
 categ: string;
+tp: string;
 imageList: any[];
 rowIndexArray: any[];
 
 formTemplate = new FormGroup({
   imageUrl : new FormControl('', Validators.required),
   category : new FormControl('', Validators.required),
+  type : new FormControl('', Validators.required),
 });
 
   constructor(private af: AngularFireStorage, private upSvc: UploadService, private cf: AngularFirestore) { }
@@ -75,7 +77,8 @@ formTemplate = new FormGroup({
     _.each(filesIndex, (idx) => {
       this.currentUpload = new Upload(files[idx]);
       this.categ = formValue.category;
-      this.upSvc.pushUpload(this.currentUpload, this.categ);
+      this.tp = formValue.type;
+      this.upSvc.pushUpload(this.currentUpload, this.categ, this.tp);
       });
     this.resetForm();
   }
@@ -149,7 +152,8 @@ uploadVideos(formValue) {
     this.formTemplate.reset();
     this.formTemplate.setValue({
       imageUrl: '',
-      category: ''
+      category: '',
+      type: ''
     });
    // this.imgSrc = '/assets/img/img.png';
     this.selectedImage = null;

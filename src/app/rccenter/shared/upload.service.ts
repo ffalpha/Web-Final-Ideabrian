@@ -22,6 +22,7 @@ export class UploadService {
   storageRef: any;
   state: boolean;
   catego: string;
+  typ: string;
   userDoc: any;
   data: any;
   itemCollections: AngularFirestoreCollection<Upload>;
@@ -55,7 +56,7 @@ export class UploadService {
       }
 
       /////////////////////////// upload image ///////////////////////////////////////////////
-      pushUpload(upload: Upload, category: string) {
+      pushUpload(upload: Upload, category: string, typp: string) {
         const storageRef = firebase.storage().ref();
         this.uploadTask = storageRef.child('Images/' + upload.file.name).put(upload.file); // upload.file.name
         this.uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
@@ -72,6 +73,7 @@ export class UploadService {
                   name: upload.file.name,
                   url: downloadURL,
                   cat: category,
+                  type: typp
 
               });
           });
