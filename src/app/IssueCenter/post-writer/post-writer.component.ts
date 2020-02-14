@@ -14,9 +14,7 @@ import {Router} from '@angular/router';
 import * as uuid from "uuid";
 
 //getting user related data 
-import { UserDetailsService} from "../../common/user-details.service";
-import { async } from 'q';
-
+import { UserDetailsService} from "../../common/user-details.service"; 
 @Component({
   selector: "app-post-writer",
   templateUrl: "./post-writer.component.html",
@@ -51,8 +49,7 @@ export class PostWriterComponent implements OnInit {
 
 
   }
-  
-
+   
   // editor properties
   editorStyle = { height: "300px" };
   editorConfig = {
@@ -67,12 +64,9 @@ export class PostWriterComponent implements OnInit {
     ]
   };
 
-  
-
+   
   ngOnInit() {
-
-     
-
+  
     this.editorForm = new FormGroup({
       editor: new FormControl(null),
       title: new FormControl(null)
@@ -99,6 +93,7 @@ export class PostWriterComponent implements OnInit {
     } else {
       this.postCatagory = "error";
     }
+  
   }  
 
  //file upload related 
@@ -161,7 +156,13 @@ export class PostWriterComponent implements OnInit {
     } else {
       customTxt.innerHTML = "No file choosen yet.";
     }
+
+
+
+
   }
+
+
 
   onSubmit() {
     this.editorContent = this.editorForm.get("editor").value;
@@ -217,6 +218,8 @@ export class PostWriterComponent implements OnInit {
 
           //image is placed under the folder at the catagory selection
           const uniqueID = uuid.v4();
+          const user = JSON.parse(localStorage.getItem('user'));
+          const uid = user['uid'].replace('"', "").replace('"', "")  
           const post = {
             //uploader related data
             name: this.userObject["displayName"],  
@@ -229,11 +232,10 @@ export class PostWriterComponent implements OnInit {
             image: result, // this should be the image of the uploader but currently it's the image  related  to the post
             category: this.databaseName,
             uuid: uniqueID,
-            userID: localStorage.getItem('user').replace('"', "").replace('"', "") ,//uid of the writer
+            userID: uid ,//uid of the writer
             comments: {0 : 0}
           };
-
-console.log(localStorage.getItem('uid'))
+ 
 
           this.afs.collection(this.databaseName).doc(uniqueID).set(post); //other than above mentioned errors others look good
           const urlPart = parseInt(this.route.snapshot.paramMap.get("id"));

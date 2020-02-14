@@ -24,8 +24,22 @@ export class AuthService {
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData)); 
-        JSON.parse(localStorage.getItem('user'));
+        localStorage.setItem('user', JSON.stringify(this.userData.uid)); //saved UID to identify the user uniquely
+      
+        const ref: AngularFirestoreDocument<any> =afs.doc(`users/${this.userData.uid}`);
+        ref.get().subscribe(snap => {
+          if (!snap.exists) {
+            afs.doc(`users/${this.userData.uid}`).set({
+              displayName: this.userData.displayName,
+              email: this.userData.email,
+              photoURL: this.userData.photoURL,
+              uid: this.userData.uid, 
+              emailVerified: this.userData.emailVerified,
+              loggedWith: "Oauth"
+          })
+          }
+        });
+
       } else {
         localStorage.setItem('user', null);
         JSON.parse(localStorage.getItem('user'));
@@ -33,12 +47,28 @@ export class AuthService {
     })
   }
 
+  //----------------------------------------------------------------------email password----------------------------------------------------------------
+  restUserData(){ 
+    this.afAuth.authState.subscribe(user => {
+    if (user) {
+      this.userData = user;
+      localStorage.setItem('user', JSON.stringify(this.userData.uid));
+      JSON.parse(localStorage.getItem('user'));
+      console.log(user);
+    } else {
+      localStorage.setItem('user', null);
+      JSON.parse(localStorage.getItem('user'));
+    }
+  })
+
+  }
+
   // Sign in with email/password
   SignIn(email, password) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['cat']);
         });
         this.SetUserData(result.user);
       }).catch((error) => {
@@ -49,13 +79,10 @@ export class AuthService {
   // Sign up with email/password
   SignUp(email, password) {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-      .then((result) => {
-        /* Call the SendVerificaitonMail() function when new user sign 
-        up and returns promise */
-        this.afAuth.auth.signOut();
+      .then((result) => { 
         this.SendVerificationMail();
-        localStorage.setItem('user', null);
-       // this.SetUserData(result.user);
+        this.SetUserData(result.user);
+        this.router.navigate(['sign-in']);
       }).catch((error) => {
         window.alert(error.message)
       })
@@ -80,12 +107,11 @@ export class AuthService {
   }
 
   // Returns true when user is looged in and email is verified
+  //usefull in implementing guards
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
     return (user !== null && user.emailVerified !== false) ? true : false;
   }
-
- 
 
   // Sign in with Google
   GoogleAuth() {
@@ -95,15 +121,15 @@ export class AuthService {
   FacebookAuth() {
     return this.AuthLogin(new auth.FacebookAuthProvider());
   }
-
   // Auth logic to run auth providers
   AuthLogin(provider) {
     return this.afAuth.auth.signInWithPopup(provider)
     .then((result) => {
        this.ngZone.run(() => {
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['cat']);
         })
       this.SetUserData(result.user);
+      console.log( JSON.stringify(result.user) );
     }).catch((error) => {
       window.alert(error)
     })
@@ -113,33 +139,26 @@ export class AuthService {
   sign up with username/password and sign in with social auth  
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
   SetUserData(user) {
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-    const userData: User = {
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-      emailVerified: user.emailVerified
-    }
-    return userRef.set(userData, {
-      merge: true
-    })
-  }
-
  
-
-//------------------Update fields in user's document--------------------------------
-  resetUserData(){ 
-    this.afAuth.authState.subscribe(user => {
-      if (user) {
-        this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData.uid));
-      } else {
-        localStorage.setItem('user', null);
-        JSON.parse(localStorage.getItem('user'));
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+    
+    userRef.get().subscribe(snap => {
+      if (!snap.exists) {
+        const userData = {
+          uid: user.uid,
+          email: user.email,
+          emailVerified: user.emailVerified,
+          photo: user.photoURL, 
+        }
+        return userRef.set(userData, {
+          merge: true
+        })
       }
-    })
+   });
   }
+
+  
+
   
   setCustomUserData(user) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
@@ -148,7 +167,7 @@ export class AuthService {
       photoURL: user.photoURL 
     }
     //this.userData = user;
-    this.resetUserData();
+    this.restUserData();
     return userRef.set(userData, {
       merge: true
     })

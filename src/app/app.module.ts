@@ -37,6 +37,8 @@ import { NotificationsComponent } from './notifications/notifications.component'
 //notifications 
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { ChatComponent } from './chat/chat.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { TestComponentComponent } from './test-component/test-component.component';
 
 // Firebase Config
 const firebaseConfig = {
@@ -56,7 +58,7 @@ const firebaseConfig = {
   declarations: [
     AppComponent,
     PostComponent,
-    PostWriterComponent , AlgoliaPostsComponent, CatagoryPageComponent , CatagoryCardComponent, ReadMorePageComponent, AnswerComponent, LoginFormComponent, SignupFormComponent, ForgotPasswordComponent, VarifyEmailComponent, ProfileComponent, NavbarComponent, NotificationsComponent, ChatComponent,
+    PostWriterComponent , AlgoliaPostsComponent, CatagoryPageComponent , CatagoryCardComponent, ReadMorePageComponent, AnswerComponent, LoginFormComponent, SignupFormComponent, ForgotPasswordComponent, VarifyEmailComponent, ProfileComponent, NavbarComponent, NotificationsComponent, ChatComponent, HomePageComponent, TestComponentComponent,
   ],
   imports: [ 
     BrowserModule,

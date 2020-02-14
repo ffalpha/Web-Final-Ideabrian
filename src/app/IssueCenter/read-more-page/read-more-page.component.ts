@@ -6,6 +6,7 @@ import { UserDetailsService } from "../../common/user-details.service";
 
 import { Notification } from "../../common/Notification.interface";
 import * as uuid from "uuid";
+import * as firebase from 'firebase/app';
 @Component({
   selector: "app-read-more-page",
   templateUrl: "./read-more-page.component.html",
@@ -29,11 +30,13 @@ export class ReadMorePageComponent implements OnInit {
   //notification related
   path: string;
 
+  //select answer related 
+  isOwner:boolean; uid:string;
+
   constructor(
     // public  spy: jasmine.Spy,
     private route: ActivatedRoute,
-    private afs: AngularFirestore,
-    private afs1: AngularFirestore,
+    private afs: AngularFirestore, 
     private user: UserDetailsService
   ) {
     this.newComment = new FormControl("");
@@ -48,6 +51,9 @@ export class ReadMorePageComponent implements OnInit {
     this.databaseName = this.route.snapshot.paramMap.get("category");
     this.uuid = this.route.snapshot.paramMap.get("uuid"); 
     this.docRef = this.afs.collection(this.databaseName).doc(this.uuid);
+
+    
+
   }
 
   getDate() {
@@ -77,6 +83,7 @@ export class ReadMorePageComponent implements OnInit {
           this.date = this.documentObject["date"];
           this.solved = this.documentObject["solved"];
           this.body = this.documentObject["body"];
+          this.uid = this.documentObject["uid"];
 
           //JSON mapping of objects to array
           //check for undefined
@@ -89,7 +96,16 @@ export class ReadMorePageComponent implements OnInit {
             arr_names[a - 1] = this.documentObject["comments"][a];
           }
 
+          //set the owner info
+          /*
+          if (this.uid===){
+            this.isOwner = true;
+          }
+*/
           this.comments = arr_names;
+
+
+
         } else {
           console.log("No such document!");
         }

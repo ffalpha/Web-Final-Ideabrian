@@ -20,8 +20,8 @@ export class NotificationsComponent {
   private test: boolean = false;
   constructor(public afs: AngularFirestore, private router: Router) {
     //genarate UID
-    const uid1 = localStorage.getItem("user");
-    this.uid = uid1.replace('"', "").replace('"', ""); //removed blockQuotes
+    const user = JSON.parse(localStorage.getItem('user'));
+    this.uid = user.uid;
     //read the document
     this.notificationsCollection = afs.collection<Notification>(
       `Notifications/${this.uid}/${this.uid}/`

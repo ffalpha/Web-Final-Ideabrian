@@ -1,27 +1,27 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from 'angularfire2/firestore';
-
+import * as firebase from 'firebase/app';  
 @Injectable({
   providedIn: 'root'
 })
 export class UserDetailsService {
+ 
+  
+ 
+ uid:string ;
+ user:any;
 
-  constructor (private afs:AngularFirestore) { } 
+  constructor (private afs:AngularFirestore){
+    const user = JSON.parse(localStorage.getItem('user'));
+    this.uid = user['uid'].replace('"', "").replace('"', "") 
+    
+   } 
 
-  getUser(){
-      //if we need we could add secure hashing to keep the local storage safe 
-      //use crypto js and AES to do that 
-      const uidRow =  localStorage.getItem('user');
-      const uid = uidRow.replace('"',"").replace('"',""); 
-      return this.afs.collection("users").doc(uid).get()
-    }
+  getUser(){  
+    return this.afs.collection("users").doc(this.uid).get()
+  }
 
-  //getting user details from another user
-  getDetails(uidRow){ 
-    console.log(this.afs.collection("users").doc(uidRow).get());
-    return this.afs.collection("users").doc(uidRow).get()
-  }  
-
+  
 }
 
 
