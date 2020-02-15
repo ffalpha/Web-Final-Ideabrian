@@ -37,8 +37,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
 //notifications 
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { ChatComponent } from './chat/chat.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { TestComponentComponent } from './test-component/test-component.component';
+import { HomePageComponent } from './home-page/home-page.component'; 
 
 // Firebase Config
 const firebaseConfig = {
