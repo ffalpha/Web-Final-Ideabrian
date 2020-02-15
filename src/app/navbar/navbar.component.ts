@@ -25,8 +25,13 @@ export class NavbarComponent {
 
   constructor(public afs: AngularFirestore,private notify: NotificationsService,private router: ActivatedRoute,private auth: AuthService) {
    
-    const user = JSON.parse(localStorage.getItem('user'));
-    this.usersUID = user['uid'].replace('"', "").replace('"', "")   
+    if(localStorage.getItem('user') !="null" ){
+      const user = JSON.parse(localStorage.getItem('user'));
+      this.usersUID = user['uid'].replace('"', "").replace('"', "")   
+
+    }
+   
+   
     this.newNotifications = false;
     this.notificationCollection = afs.collection<Notification>(`Notifications/${this.usersUID}/${this.usersUID}/`); //5xmXcPPVmPgWi4uttnN2v6rrMmD2/fEsNdG9LaHNPK2f3LYuH/
     this.notification = this.notificationCollection.valueChanges();
