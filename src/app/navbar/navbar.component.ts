@@ -20,22 +20,21 @@ export class NavbarComponent {
   public newNotifications: boolean;
   private notificationCollection: AngularFirestoreCollection<Notification>;
   notification: Observable<Notification[]>;
-  private usersUID: string;
+  private usersUID: string;//stores user's UID
   notificationsCollection: AngularFirestoreCollection<Notification>;
 
   constructor(public afs: AngularFirestore,private notify: NotificationsService,private router: ActivatedRoute,private auth: AuthService) {
    
+    //if user logged in get his uid from localStorage
     if(localStorage.getItem('user') !="null" ){
       const user = JSON.parse(localStorage.getItem('user'));
       this.usersUID = user['uid'].replace('"', "").replace('"', "")   
-
     }
    
-   
+    
     this.newNotifications = false;
     this.notificationCollection = afs.collection<Notification>(`Notifications/${this.usersUID}/${this.usersUID}/`); //5xmXcPPVmPgWi4uttnN2v6rrMmD2/fEsNdG9LaHNPK2f3LYuH/
     this.notification = this.notificationCollection.valueChanges();
-    //console.log(this.usersUID);
     
     //don't display notifications in the detailed notification page
     if (this.router.pathFromRoot.toString() =="Route(url:'', path:''),Route(url:'not', path:'not')"){
@@ -57,10 +56,10 @@ export class NavbarComponent {
   update(notification: Notification) {
     this.notificationsCollection.add(notification);
   }
+
   //properties of bottom notification
-  createNotification( ) {
-    console.log("Button clicked ");
-    this.notify.success("New answer added !", "Check  notifications ", {
+  createNotification() { 
+    this.notify.success("New answer added !", " Check  notifications to see details  ", {
       timeOut: 3000,
       showProgressBar: true,
       pauseOnHover: true,

@@ -13,19 +13,22 @@ import { Router } from "@angular/router";
   styleUrls: ["./notifications.component.scss"]
 })
 export class NotificationsComponent {
+
   private notificationsCollection: AngularFirestoreCollection<Notification>; //notification collection in firestore
   private notifications: Observable<Notification[]>; //observable to maintain the array of notifications
   private uid: string; //uid to store data
   private navigateNow: boolean = false; // skip the error of notification after navigation
-  private test: boolean = false;
+
   constructor(public afs: AngularFirestore, private router: Router) {
     //genarate UID
     const user = JSON.parse(localStorage.getItem('user'));
     this.uid = user.uid;
+   
     //read the document
     this.notificationsCollection = afs.collection<Notification>(
       `Notifications/${this.uid}/${this.uid}/`
     );
+   
     //watch for updates
     this.notifications = this.notificationsCollection.valueChanges();
 
@@ -39,10 +42,12 @@ export class NotificationsComponent {
     );
   }
 
+  //destroy observeable 
   ngOnDestroy() {
     if (this.notifications !== null) this.notifications == null;
   }
 
+  
   update(notification: Notification) {
     this.notificationsCollection.add(notification);
   }
@@ -50,17 +55,9 @@ export class NotificationsComponent {
   //naviage to the specific path
   navigate(url, id) {
     //set notification status to > seen
-    this.afs
-      .collection("Notifications")
-      .doc(this.uid)
-      .collection(this.uid)
-      .doc(id)
-      .update({ seen: true });
+    this.afs.collection("Notifications").doc(this.uid).collection(this.uid).doc(id).update({ seen: true });
 
     //navigate to the document page
-    /* Naviagete to the route after the change is finished
-     */
-
     if (this.navigateNow) {
       this.router.navigate(["/" + url]);
       this.navigateNow = false;

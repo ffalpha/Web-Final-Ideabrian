@@ -1,5 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed , inject , tick , fakeAsync } from '@angular/core/testing';
 
+import { DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser'
 import { LoginFormComponent } from './login-form.component';
 
 describe('LoginFormComponent', () => {
