@@ -21,11 +21,11 @@ export class UploadFormComponent implements OnInit {
   title = 'store';
   selectedFiles: FileList;
   isSubmitted: boolean;
-currentUpload: Upload;
-categ: string;
-tp: string;
-imageList: any[];
-rowIndexArray: any[];
+  currentUpload: Upload;
+  categ: string;
+  tp: string;
+  imageList: any[];
+  rowIndexArray: any[];
 
 formTemplate = new FormGroup({
   imageUrl : new FormControl('', Validators.required),
@@ -42,35 +42,10 @@ formTemplate = new FormGroup({
   detectFiles(event: any) {
     this.selectedFiles = event.target.files;
     console.log(event);
-   /* if (event.target.files && event.target.files[0]) {
-      const reader = new FileReader();
-      reader.onload = (e: any) => this.imgSrc = e.target.result;
-      reader.readAsDataURL(event.target.files[0]);
-      this.selectedImage = event.target.files[0];
-    } else {
-      this.imgSrc = '/assets/img/img.png';
-      this.selectedImage = null;
-    } */
-
   }
-
-  /////////////// for files ////////////////////////////////////////////////////////
-  detectPFiles(event: any) {
-    this.selectedFiles = event.target.files;
-    console.log(event);
-
-  }
-
-  //////////// for videos///////////////////////////////////////////////////////////
-  detectVFiles(event: any) {
-    this.selectedFiles = event.target.files;
-    console.log(event);
-
-  }
-
 
 ////////// form images //////////////////////////////////////////////////////////
- uploadImages(formValue) {
+  uploadImages(formValue) {
     this.isSubmitted = true;
     const files = this.selectedFiles;
     const filesIndex = _.range(files.length);
@@ -82,60 +57,6 @@ formTemplate = new FormGroup({
       });
     this.resetForm();
   }
-
-/* uploadImages(formValue) {
-    const filePath = ('Images/' + this.selectedImage.name);
-    const fileRef = this.af.ref(filePath);
-    this.af.upload(filePath, this.selectedImage).snapshotChanges().pipe(
-      finalize(() => {
-        fileRef.getDownloadURL().subscribe((url) => {
-          formValue.imageUrl = url;
-          this.upSvc.insertImageDetails(formValue);
-          this.resetForm();
-        });
-      })
-    ).subscribe();
-  } */
-
-
-
-
-
-
-
-
-
-
-
-
-
-  /////////// for files /////////////////////////////////////////////////////////////
-  uploadFiles(formValue) {
-    this.isSubmitted = true;
-    const files = this.selectedFiles;
-    const filesIndex = _.range(files.length);
-    _.each(filesIndex, (idx) => {
-      this.currentUpload = new Upload(files[idx]);
-      this.categ = formValue.category;
-      this.upSvc.pushUploadF(this.currentUpload, this.categ);
-      this.resetForm();
-    });
-  }
-
-
-////////////// for videos////////////////////////////////////////////////////////////
-
-uploadVideos(formValue) {
-  this.isSubmitted = true;
-  const files = this.selectedFiles;
-  const filesIndex = _.range(files.length);
-  _.each(filesIndex, (idx) => {
-    this.currentUpload = new Upload(files[idx]);
-    this.categ = formValue.category;
-    this.upSvc.pushUploadV(this.currentUpload, this.categ);
-  });
-  this.resetForm();
-}
 
 
 
@@ -155,12 +76,8 @@ uploadVideos(formValue) {
       category: '',
       type: ''
     });
-   // this.imgSrc = '/assets/img/img.png';
     this.selectedImage = null;
     this.isSubmitted = false;
     this.currentUpload = null;
   }
-
-
-
 }

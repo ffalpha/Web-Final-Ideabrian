@@ -3,8 +3,8 @@
 
 <br><br>
 
-  
-    
+
+
     <div class="card-deck">
       <div class="view view-cascade gradient-card-header morpheus-den-gradient">
       <div class="card" style="width: 20rem;">
@@ -13,7 +13,7 @@
           <p class="mb-0">Upload here to your resource!!!</p>
         </div>
         <ul class="list-group list-group-flush">
-          
+
         </ul>
         <div class="card-body">
           <a href="#!" class="card-link">Home</a>
@@ -21,7 +21,7 @@
         </div>
       </div>
     </div>
-      
+
 
 <div class=" card">
     <div class="view view-cascade gradient-card-header morpheus-den-gradient">
@@ -30,7 +30,7 @@
 
 
         <div class="form-group"><br>
-         
+
             <input type="file"  class="form-control" formControlName="imageUrl" (change)="detectFiles($event )">
               <div class="text-danger" *ngIf="isSubmitted && !! formControls.imageUrl.errors?.required">This field is required.</div>
         </div>
@@ -53,7 +53,7 @@
       <div class="text-danger" *ngIf="isSubmitted && !! formControls.category.errors?.required">This field is required.</div>
     </div>
       <div class="form-group">
-       <button  type= "submit" class="btn btn-danger" >Upload Images</button>
+       <button  type= "submit" class="btn btn-danger" >Upload</button>
       </div>
         <br>
         <div class="form-group">
@@ -75,7 +75,7 @@
           <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
           progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete;</div>
       </ul>
-      
+
     </div>
   </div>
   </div>

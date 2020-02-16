@@ -25,7 +25,7 @@ rowIndexArray: any[];
   constructor(private af: AngularFireStorage, private upSvc: UploadService, private cf: AngularFirestore) { }
 
   ngOnInit() {
-    this.upSvc.getFiles().subscribe(
+   /* this.upSvc.getFiles().subscribe(
       list => {
         this.fileList = list.map(item => {
           return {
@@ -36,9 +36,9 @@ rowIndexArray: any[];
         this.rowIndexArray = Array.from(Array(Math.ceil(this.fileList.length / 3)).keys());
         console.log(this.fileList);
       }
-    );
+    );*/
   }
 
-  deletefile(item) { this.upSvc.deletefiles(item); }
+  // deletefile(item) { this.upSvc.deletefiles(item); }
 
 }
