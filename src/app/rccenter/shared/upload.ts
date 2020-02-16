@@ -4,6 +4,7 @@ export class Upload {
     name: string;
     url: string;
     cat: string;
+    type: string;
     progress: number;
     createdAt: Date = new Date();
   id: any;

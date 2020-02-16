@@ -1,28 +1,37 @@
+
 <body >
 
-    <h1 Align="center"> Resource Center </h1>
+<br><br>
 
-  <!-- <div *ngIf="currentUpload">
-    <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
-    progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete;</div> -->
+
 
     <div class="card-deck">
+      <div class="view view-cascade gradient-card-header morpheus-den-gradient">
+      <div class="card" style="width: 20rem;">
+        <div class="card-body">
+          <h5 class="font-weight-bold mb-3">Quik Start</h5>
+          <p class="mb-0">Upload here to your resource!!!</p>
+        </div>
+        <ul class="list-group list-group-flush">
+
+        </ul>
+        <div class="card-body">
+          <a href="#!" class="card-link">Home</a>
+          <a href="#!" class="card-link">Resources</a>
+        </div>
+      </div>
+    </div>
 
 
-  <div class="card mb-4" >
-    <div class="view view-cascade gradient-card-header peach-gradient">
+<div class=" card">
+    <div class="view view-cascade gradient-card-header morpheus-den-gradient">
       <div class="card-body">
         <form [formGroup]="formTemplate" (submit)= "uploadImages(formTemplate.value)">
-          <div class="text-center">
-            <div class="avatar mx-auto white">
-              <img alt src="/assets/images/img.png"    class="rounded-circle" width="200px" height="215px">
-            </div>
-            <br>
-          </div>
+
 
         <div class="form-group"><br>
-          <label >Select images to upload.</label>
-            <input type="file"  class="form-control" formControlName="imageUrl" accept="image/png,image/jpg,image/jpeg" (change)="detectFiles($event )">
+
+            <input type="file"  class="form-control" formControlName="imageUrl" (change)="detectFiles($event )">
               <div class="text-danger" *ngIf="isSubmitted && !! formControls.imageUrl.errors?.required">This field is required.</div>
         </div>
       <div class="form-group">
@@ -34,10 +43,17 @@
         <option value="Money and finance">Money and finance</option>
         <option value="Vehicle and transport">Vehicle and transport</option>
       </select>
+        <br>
+      <select formControlName="type" class="form-control">
+        <option value="image">Image</option>
+        <option value="file" >File</option>
+        <option value="video">Video</option>
+      </select>
+
       <div class="text-danger" *ngIf="isSubmitted && !! formControls.category.errors?.required">This field is required.</div>
     </div>
       <div class="form-group">
-       <button  type= "submit" class="btn btn-danger" >Upload Images</button>
+       <button  type= "submit" class="btn btn-danger" >Upload</button>
       </div>
         <br>
         <div class="form-group">
@@ -48,91 +64,25 @@
   </div>
   </div>
 
-
-
-    <div class="card mb-4" >
-        <div class="view view-cascade gradient-card-header peach-gradient">
+  <div class="view view-cascade gradient-card-header morpheus-den-gradient">
+    <div class="card" style="width: 20rem;">
       <div class="card-body">
-          <form [formGroup]="formTemplate" (submit)= "uploadFiles(formTemplate.value)">
-          <div class="text-center">
-              <div class="avatar mx-auto white">
-              <img alt src="/assets/images/f.png"  class="rounded-circle" width="200px" height="199px">
-              <br><br>
-              </div>
-            </div>
-            <div class="form-group">
-              <br><br>
-        <label>Select files to upload </label>
-          <input type="file"  class="form-control" formControlName="imageUrl" accept="file/pdf" (change)="detectPFiles($event)" multiple>
-        <div class="text-danger" *ngIf="isSubmitted && !! formControls.imageUrl.errors?.required">This field is required.</div>
+        <h5 class="font-weight-bold mb-3">Success Area</h5>
+        <p class="mb-0">Success?</p>
       </div>
-        <div class="form-group">
-          <select formControlName="category" class="form-control">
-            <option value="Agriculture and cropes" >Agriculture and cropes</option>
-            <option value="Health and fitness" >Health and fitness</option>
-            <option value="Education">Education</option>
-            <option value="Science and technology">Science and technology</option>
-            <option value="Money and finance">Money and finance</option>
-            <option value="Vehicle and transport">Vehicle and transport</option>
-          </select>
-          <div class="text-danger" *ngIf="isSubmitted && !! formControls.category.errors?.required">This field is required.</div>
-        </div>
-        <div class="form-group">
-          <button class="btn btn-danger"  >Upload Files</button>
-        </div>
-    <br>
-          <div class="form-group">
-          <button type="reset" class="btn btn-success" id="reset-btn" (click)="resetForm()">Reset?</button>
-        </div>
-    </form>
+      <ul class="list-group list-group-flush">
+        <div *ngIf="currentUpload">
+          <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+          progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete;</div>
+      </ul>
+
     </div>
   </div>
   </div>
-
-  <div class="card mb-4" >
-      <div class="view view-cascade gradient-card-header peach-gradient">
-      <div class="card-body">
-          <form [formGroup]="formTemplate" (submit)= "uploadVideos(formTemplate.value)">
-          <div class="text-center">
-              <div class="avatar mx-auto white">
-              <img alt src="/assets/images/v.png" class="rounded-circle" width="200px" height="200px">
-              <br><br>
-              </div>
-            </div>
-          <div class="form-group">
-            <br><br>
-        <label>Select videos to upload</label>
-          <input type="file"  class="form-control" formControlName="imageUrl" accept="video/*" (change)="detectVFiles($event)" multiple>
-        <div class="text-danger" *ngIf="isSubmitted && !! formControls.imageUrl.errors?.required">This field is required.</div>
-      </div>
-        <div class="form-group">
-          <select formControlName="category" class="form-control">
-            <option value="Agriculture and cropes" >Agriculture and cropes</option>
-            <option value="Health and fitness" >Health and fitness</option>
-            <option value="Education">Education</option>
-            <option value="Science and technology">Science and technology</option>
-            <option value="Money and finance">Money and finance</option>
-            <option value="Vehicle and transport">Vehicle and transport</option>
-          </select>
-          <div class="text-danger" *ngIf="isSubmitted && !! formControls.category.errors?.required">This field is required.</div>
-        </div>
-          <div class="form-group">
-          <button class="btn btn-danger" >Upload videos</button>
-          </div>
-    <br>
-          <div class="form-group">
-          <button type="reset" class="btn btn-success" id="reset-btn" (click)="resetForm()">Reset?</button>
-        </div>
-    </form>
-    </div>
-  </div>
-  </div>
-  </div>
+  <br>
 
   <p align="center">
       <button mdbBtn type="button" color="primary" rounded="true" onclick="location.href='/home'" mdbWavesEffect>Home</button>
-  <button mdbBtn type="button" color="secondary" rounded="true"  onclick="location.href='/gallery'" mdbWavesEffect>Gallery</button>
-  <button mdbBtn type="button" color="warning" rounded="true"  onclick="location.href='/fileview'" mdbWavesEffect>Files</button>
-  <button mdbBtn type="button" color="default" rounded="true" onclick="location.href='/videoview'" mdbWavesEffect>Videos</button>
+  <button mdbBtn type="button" color="secondary" rounded="true"  onclick="location.href='/gallery'" mdbWavesEffect>Resources</button>
   </p>
   </body>

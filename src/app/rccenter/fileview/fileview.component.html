@@ -3,34 +3,34 @@
       <!--Card-->
       <div class="img">
       <ul *ngFor="let item of fileList" class="collection">
-      
+
       <div class="col-md-3">
         <mdb-card cascade="true" narrower="true">
-      
+
         <!--Card image-->
         <div class="view overlay waves-light" mdbWavesEffect>
-          <mdb-card-img src="/assets/img/fileicon.png" class="card-img h-100"></mdb-card-img>
+          <mdb-card-img src="/assets/images/fileicon.png" class="card-img h-100"></mdb-card-img>
           <a>
             <div class="mask rgba-white-slight"></div>
           </a>
-          
+
         </div>
-      
+
         <!--/.Card image-->
-      
+
         <!--Button-->
         <a mdbBtn floating="true" class="btn-action ml-auto mr-4 mdb-color lighten-3 waves-light" mdbWavesEffect>
           <mdb-icon fas icon="chevron-right" class="pl-1 waves-light" mdbWavesEffect></mdb-icon>
         </a>
-      
+
         <!--Card content-->
         <mdb-card-body>
-      
+
           <!--Title-->
           <mdb-card-title>
             <h4><strong >{{item.name}}</strong></h4>
           </mdb-card-title>
-      
+
           <hr>
           <!--Text-->
           <p class="font-small grey-dark-text mb-0">Category: <strong >{{item.cat}} </strong> </p>
@@ -38,29 +38,14 @@
             <h5 class="waves-light" mdbWavesEffect>Download
               <mdb-icon fas icon="chevron-right" class="waves-light" mdbWavesEffect></mdb-icon>
             </h5>
-          </a>
-          <button class="btn btn-success" (click)="deletefile(item)"> Delete</button>
+          </a><br>
+          <button class="btn btn-success" > Delete</button>
         </mdb-card-body>
         <!--/.Card content-->
-      
+
         <!-- Card footer -->
         <mdb-card-footer class="mdb-color lighten-3 text-center">
-          <ul class="list-unstyled list-inline font-small mt-3">
-            <li class="list-inline-item pr-2 white-text">
-              <mdb-icon far icon="clock" class="pr-1"></mdb-icon>05/10/2015</li>
-            <li class="list-inline-item pr-2">
-              <a href="#" class="white-text">
-                <mdb-icon far icon="comments" class="pr-1"></mdb-icon>12</a>
-            </li>
-            <li class="list-inline-item pr-2">
-              <a href="#" class="white-text">
-                <mdb-icon fab icon="facebook-f" class="pr-1"> </mdb-icon>21</a>
-            </li>
-            <li class="list-inline-item">
-              <a href="#" class="white-text">
-                <mdb-icon fab icon="twitter" class="pr-1"> </mdb-icon>5</a>
-            </li>
-          </ul>
+
         </mdb-card-footer>
         <!-- Card footer -->
       </mdb-card>
@@ -74,7 +59,6 @@
           <button mdbBtn type="button" color="warning" rounded="true"  onclick="location.href='/gallery'" mdbWavesEffect>Gallery</button>
           <button mdbBtn type="button" color="default" rounded="true" onclick="location.href='/videoview'" mdbWavesEffect>Videos</button>
           </p>
-      
+
       <!------>
       </body>
-      

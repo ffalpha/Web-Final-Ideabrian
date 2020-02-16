@@ -14,6 +14,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 export class GalleryComponent implements OnInit {
   uploads: AngularFireList<Upload[]>;
   imgSrc: string ;
+  name: string;
   selectedImage: any = null;
   title = 'store';
   selectedFiles: FileList;
@@ -33,7 +34,7 @@ rowIndexArray: any[];
       this.imageList = list.map(item => {
         return {
           $key: item.payload.doc.id,
-          ...item.payload.doc.data()   /*data()*/
+          ...item.payload.doc.data()  /*data()*/
         } as Upload;
       } );
       this.rowIndexArray = Array.from(Array(Math.ceil(this.imageList.length / 3)).keys());
@@ -42,9 +43,7 @@ rowIndexArray: any[];
   );
   }
    deleteimage(item) { this.upSvc.deleteimages(item); }
-/* deleteimage(data) {
-  this.upSvc.deleteimages(data);
-} */
+
 
 
 }

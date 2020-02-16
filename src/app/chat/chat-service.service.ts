@@ -24,28 +24,39 @@ export interface User {
   
 }
 
-var user:any;
+ 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatServiceService {
+   userid:any;
+  user:any;
   chatCollection:AngularFirestoreCollection<Chat>;
   userCollection:AngularFirestoreCollection<User>;
   constructor(
     private firestore: AngularFirestore,
-    private user:UserDetailsService
-  ) { }
+    private usersd:UserDetailsService
+  ) {
+
+
+    this.usersd.getUser().subscribe(async doc=>{
+      this.user =await doc.data();
+      console.log(JSON.stringify(this.user,null,2));
+      this.userid=this.user['uid'];
+    });
+   }
 
 
   public async sendmessage(chatObj: Chat) {
-    // var id = this.currrentUserId()?this.currrentUserId():""; //geting current userId
-    // var email = this.afAuth.auth.currentUser.email?this.afAuth.auth.currentUser.email:"";
+   var user=this.usersd.getUser().subscribe(
+     
+   )
   
     let chat = {
-      from: "Kalana",
-      uid:"1123",
+      from: this.user['email'],
+      uid:this.user['uid'],
       message: chatObj["Msg"],
-      photoUrl: "https://firebasestorage.googleapis.com/v0/b/ideabrain-d419f.appspot.com/o/profilePics%2FMauro-profile-picture.jpg?alt=media&token=7f932b54-e65f-4d6d-94b0-1c56e316a4f5",
+      photoUrl: this.user['photoURL'],
       createdAt: new Date()
     };
    
