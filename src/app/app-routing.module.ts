@@ -24,7 +24,9 @@ const routes: Routes = [
   {path: 'a/:id', component: AlgoliaPostsComponent  , canActivate:[AuthGuard]}, 
   {path: '', component: CatagoryPageComponent , canActivate:[AuthGuard]}, 
   {path: 'cat', component: CatagoryPageComponent , canActivate:[AuthGuard] },   
-  {path: 'readMore/:category/:uuid', component: ReadMorePageComponent , canActivate:[AuthGuard]},   
+  {path: 'readMore/:category/:uuid', component: ReadMorePageComponent , canActivate:[AuthGuard]},
+  
+  {path:'home',component:HomePageComponent},
  
 
   //notofications 
