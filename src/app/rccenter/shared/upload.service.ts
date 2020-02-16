@@ -37,7 +37,7 @@ export class UploadService {
     });
   }
 
-      private basePath: string = 'Images/';
+      private basePath: string = 'digiresource/';
       private uploadTask: firebase.storage.UploadTask;
       private name;
       private url;
@@ -45,14 +45,14 @@ export class UploadService {
 
     ///////////////// get images //////////
     getUploads() {
-      return this.cf.collection(`/${this.basePath}`).snapshotChanges();
+      return this.cf.collection(`digiresource/${this.basePath}`).snapshotChanges();
     }
 
 
     /////////////////////////// upload image ///////////////////////////////////////////////
       pushUpload(upload: Upload, category: string, typp: string) {
         const storageRef = firebase.storage().ref();
-        this.uploadTask = storageRef.child('Images/' + upload.file.name).put(upload.file); // upload.file.name
+        this.uploadTask = storageRef.child('digiresource/' + upload.file.name).put(upload.file); // upload.file.name
         this.uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
           (snapshot) => {
             upload.progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -61,13 +61,15 @@ export class UploadService {
             console.log(error);
           },
           () => {
-            storageRef.child(`Images/${upload.file.name}`).getDownloadURL().then((downloadURL) => {
+            storageRef.child(`digiresource/${upload.file.name}`).getDownloadURL().then((downloadURL) => {
 
               this.cf.collection(this.basePath).add({
                   name: upload.file.name,
                   url: downloadURL,
                   cat: category,
                   type: typp,
+                  uid:"123",
+                  uploader:"hasini",
                   
 
               });
@@ -79,7 +81,7 @@ export class UploadService {
 
       ///////////////// delete image //////////////////////////
       deleteimages(item: Upload) {
-        this.itemDoc = this.cf.doc(`Images/${item.$key}`);
+        this.itemDoc = this.cf.doc(`digiresource/${item.$key}`);
         this.itemDoc.delete();
         console.log('Delete Successfully');
       }
