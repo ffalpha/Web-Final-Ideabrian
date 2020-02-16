@@ -18,6 +18,7 @@ export class AnswerComponent  {
   @Input() index: number;  
   @Input() uid: string;  
   @Input() category: string; 
+  @Input() answer: number; 
 
 
   @Output() visibilityEvent  = new EventEmitter<boolean>();
@@ -33,5 +34,8 @@ export class AnswerComponent  {
       this.visibilityEvent.emit(false);
   }
   
+  get isAnswer(): boolean {
+   return (this.answer = this.index) ? true:false
+  }
  
 } 

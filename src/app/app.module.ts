@@ -40,7 +40,7 @@ import { ChatComponent } from './chat/chat.component';
 import { HomePageComponent } from './home-page/home-page.component'; 
 
 // Firebase Config
-const firebaseConfig = {
+/*const firebaseConfig = {
   apiKey: "AIzaSyDOoUjEoiLPF7sW7o4KyWEyyirvvsqidDU",
   authDomain: "ideabrain-d419f.firebaseapp.com",
   databaseURL: "https://ideabrain-d419f.firebaseio.com",
@@ -49,7 +49,17 @@ const firebaseConfig = {
   messagingSenderId: "893231056319",
   appId: "1:893231056319:web:c41f8100b752d920b64d0a",
   measurementId: "G-XWCD20CMJ6"
-}; 
+};*/
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDi7BJI_B4F6sQmPBalHpuPKLVFOoPu790",
+  authDomain: "data-concord-238311.firebaseapp.com",
+  databaseURL: "https://data-concord-238311.firebaseio.com",
+  projectId: "data-concord-238311",
+  storageBucket: "data-concord-238311.appspot.com",
+  messagingSenderId: "217756493190",
+  appId: "1:217756493190:web:3eaee1a2de69fa62147807"
+};
 
 
 
