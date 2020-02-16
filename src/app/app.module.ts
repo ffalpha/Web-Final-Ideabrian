@@ -9,7 +9,7 @@ import { MDBBootstrapModule ,DropdownModule } from 'angular-bootstrap-md';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  
 import { QuillModule } from 'ngx-quill';
-import { ReactiveFormsModule } from '@angular/forms'; 
+import { ReactiveFormsModule,FormsModule } from '@angular/forms'; 
 import { AlgoliaPostsComponent } from './IssueCenter/algolia-posts/algolia-posts.component';
 import { NgAisModule} from 'angular-instantsearch';
 import { CatagoryPageComponent } from './IssueCenter/catagory-page/catagory-page.component'; 
@@ -81,6 +81,7 @@ const firebaseConfig = {
     MDBBootstrapModule.forRoot(),  
     QuillModule.forRoot(),
     ReactiveFormsModule,
+    FormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule, 
     NgAisModule.forRoot(),
