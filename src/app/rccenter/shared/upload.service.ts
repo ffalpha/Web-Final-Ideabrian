@@ -81,6 +81,7 @@ export class UploadService {
       deleteimages(item: Upload) {
         this.itemDoc = this.cf.doc(`Images/${item.$key}`);
         this.itemDoc.delete();
+        console.log('Delete Successfully');
       }
 }
 

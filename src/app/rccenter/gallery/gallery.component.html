@@ -1,10 +1,12 @@
+
 <body>
     <!--Card--><br><br>
-  
-    <div class="img-fluid">
+    
+
+     <div class="img-fluid">
     <ul *ngFor="let item of imageList" class="collection">
-  
-    <div class="col-md-6 mb-4">
+
+    <div class="col-md-6 mb-6">
       <mdb-card cascade="true" narrower="true">
 
       <!--Card image-->
@@ -19,8 +21,8 @@
     </div>
       <!--/.Card image-->
 
-     
-      
+
+
 
       <!--Card content-->
       <mdb-card-body>
@@ -29,13 +31,13 @@
         <mdb-card-title>
           <h4><strong >{{item.name}}</strong></h4>
         </mdb-card-title>
-        
+
 
         <hr>
         <!--Text-->
         <p class="font-small grey-dark-text mb-0">Category: <strong >{{item.cat}} </strong> </p>
         <p class="font-small grey-dark-text mb-0">Type: <strong >{{item.type}} </strong> </p>
-        
+
         <a href="{{item.url}}" class="waves-light">
           <h5 class="waves-light" mdbWavesEffect>Download
             <mdb-icon fas icon="chevron-right" class="waves-light" mdbWavesEffect></mdb-icon>
@@ -57,7 +59,7 @@
     <!--/.Card-->
 
     <p align="center">
-    <button mdbBtn type="button" color="primary" rounded="true" onclick="location.href='/home'" mdbWavesEffect>Home</button>
+    <button mdbBtn type="button" color="primary" rounded="true" onclick="location.href='rccenter/home'" mdbWavesEffect>Home</button>
     <button mdbBtn type="button" color="secondary" rounded="true"  onclick="location.href='/upload-form'" mdbWavesEffect>Upload</button>
 
     </p>
