@@ -1,7 +1,11 @@
-
+body {
+  background-image: url("/assets/images/dark.png");
+  background-size: cover;
+  // background-repeat: repeat-x;
+}
  .card {
-    min-height: 40px;
-  };
+  float: center;
+ }
   
   
   

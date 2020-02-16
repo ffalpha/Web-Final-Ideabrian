@@ -22,6 +22,7 @@ export class UploadService {
   storageRef: any;
   state: boolean;
   catego: string;
+  typ: string;
   userDoc: any;
   data: any;
   itemCollections: AngularFirestoreCollection<Upload>;
@@ -34,30 +35,24 @@ export class UploadService {
         this.uid = auth.uid;
       }
     });
-      }
+  }
 
-      private basePath: string = 'Images/';
-      private baseFilePath: string = 'Files/';
-      private baseVideoPath: string = 'Videos/';
+      private basePath: string = 'digiresource/';
       private uploadTask: firebase.storage.UploadTask;
       private name;
       private url;
 
+
+    ///////////////// get images //////////
     getUploads() {
-      return this.cf.collection(`/${this.basePath}`).snapshotChanges();
-      }
-      getFiles() {
-        return this.cf.collection(`/${this.baseFilePath}`).snapshotChanges();
-      }
+      return this.cf.collection(`digiresource/${this.basePath}`).snapshotChanges();
+    }
 
-      getVideos() {
-        return this.cf.collection(`/${this.baseVideoPath}`).snapshotChanges();
-      }
 
-      /////////////////////////// upload image ///////////////////////////////////////////////
-      pushUpload(upload: Upload, category: string) {
+    /////////////////////////// upload image ///////////////////////////////////////////////
+      pushUpload(upload: Upload, category: string, typp: string) {
         const storageRef = firebase.storage().ref();
-        this.uploadTask = storageRef.child('Images/' + upload.file.name).put(upload.file); // upload.file.name
+        this.uploadTask = storageRef.child('digiresource/' + upload.file.name).put(upload.file); // upload.file.name
         this.uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
           (snapshot) => {
             upload.progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -65,86 +60,30 @@ export class UploadService {
           (error) => {
             console.log(error);
           },
-           () => {
-           storageRef.child(`Images/${upload.file.name}`).getDownloadURL().then((downloadURL) => {
+          () => {
+            storageRef.child(`digiresource/${upload.file.name}`).getDownloadURL().then((downloadURL) => {
 
               this.cf.collection(this.basePath).add({
                   name: upload.file.name,
                   url: downloadURL,
                   cat: category,
+                  type: typp,
+                  uid:"123",
+                  uploader:"hasini",
+                  
 
               });
-          });
+            });
 
           }
         );
       }
 
-
-      /////// upload files ////////////////////////////////////////////////////////
-      pushUploadF(upload: Upload, category: string) {
-        const storageRef = firebase.storage().ref();
-        this.uploadTask = storageRef.child('Files/' + upload.file.name).put(upload.file); // upload.file.name
-
-        this.uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
-          (snapshot) => {
-            upload.progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          },
-          (error) => {
-            console.log(error);
-          },
-          () => {
-            storageRef.child(`Files/${upload.file.name}`).getDownloadURL().then((downloadURL) => {
-
-              this.cf.collection(this.baseFilePath).add({
-                  name: upload.file.name,
-                  url: downloadURL,
-                  cat: category
-              });
-          });
-
-          }
-        );
-      }
-      //////////// upload videos/////////////////////////
-
-      pushUploadV(upload: Upload, category: string) {
-        const storageRef = firebase.storage().ref();
-        this.uploadTask = storageRef.child('Videos/' + upload.file.name).put(upload.file); // upload.file.name
-
-        this.uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
-          (snapshot) => {
-            upload.progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          },
-          (error) => {
-            console.log(error);
-          },
-          () => {
-            storageRef.child(`Videos/${upload.file.name}`).getDownloadURL().then((downloadURL) => {
-
-              this.cf.collection(this.baseVideoPath).add({
-                  name: upload.file.name,
-                  url: downloadURL,
-                  cat: category
-              });
-          });
-
-          }
-        );
-      }
+      ///////////////// delete image //////////////////////////
       deleteimages(item: Upload) {
-        this.itemDoc = this.cf.doc(`Images/${item.$key}`);
+        this.itemDoc = this.cf.doc(`digiresource/${item.$key}`);
         this.itemDoc.delete();
-     }
-
-     deletefiles(item: Upload) {
-      this.itemDoc = this.cf.doc(`Files/${item.$key}`);
-      this.itemDoc.delete();
-   }
-
-   deletevideos(item: Upload) {
-    this.itemDoc = this.cf.doc(`Videos/${item.$key}`);
-    this.itemDoc.delete();
-  }
+        console.log('Delete Successfully');
+      }
 }
 
