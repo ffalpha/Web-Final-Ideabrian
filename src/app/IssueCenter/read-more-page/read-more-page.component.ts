@@ -31,7 +31,7 @@ export class ReadMorePageComponent implements OnInit {
   path: string;
 
   //select answer related 
-  haveToSolve:boolean; uid:string;
+  haveToSolve:boolean; uid:string; answer:number;
 
   constructor(
     // public  spy: jasmine.Spy,
@@ -84,6 +84,7 @@ export class ReadMorePageComponent implements OnInit {
           this.solved = this.documentObject["status"];
           this.body = this.documentObject["body"];
           this.uid = this.documentObject["uid"];
+          this.answer = this.documentObject["answer"];
 
           //JSON mapping of objects to array
           //check for undefined
@@ -168,6 +169,7 @@ export class ReadMorePageComponent implements OnInit {
           seen: false
         };
         console.log(JSON.stringify(newEvent));  
+
         this.afs
         .collection("Notifications")
         .doc( this.documentObject["uid"])
@@ -185,6 +187,7 @@ export class ReadMorePageComponent implements OnInit {
  
   selectAnswer($event){
     this.haveToSolve = $event;
+    this.solved = "solved";
   }
 
 

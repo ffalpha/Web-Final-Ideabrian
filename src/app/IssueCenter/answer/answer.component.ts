@@ -35,7 +35,10 @@ export class AnswerComponent  {
   }
   
   get isAnswer(): boolean {
-   return (this.answer = this.index) ? true:false
+    if(!this.visibility){
+      return (this.answer == this.index) ? true:false
+    }
+      return false
   }
  
 } 
