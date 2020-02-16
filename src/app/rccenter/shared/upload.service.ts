@@ -45,7 +45,7 @@ export class UploadService {
 
     ///////////////// get images //////////
     getUploads() {
-      return this.cf.collection(`digiresource/${this.basePath}`).snapshotChanges();
+      return this.cf.collection(`digiresource`).snapshotChanges();
     }
 
 

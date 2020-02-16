@@ -1,88 +1,89 @@
 
 <body >
 
-<br><br>
-
-
-
-    <div class="card-deck">
-      <div class="view view-cascade gradient-card-header morpheus-den-gradient">
-      <div class="card" style="width: 20rem;">
+  <br><br>
+  
+  
+  
+      <div class="card-deck">
+        <div class="view view-cascade ">
+        <div class="card" style="width: 20rem;">
+          <div class="card-body text-white">
+            <h5 class="font-weight-bold mb-3">Quik Start</h5>
+            <p class="mb-0">Upload here to your resource!!!</p>
+          </div>
+          <ul class="list-group list-group-flush">
+  
+          </ul>
+          <div class="card-body">
+            <a href="#!" class="card-link">Home</a>
+            <a href="#!" class="card-link">Resources</a>
+          </div>
+        </div>
+      </div>
+  
+  
+  <div class=" card">
+      <div class="view view-cascade ">
         <div class="card-body">
-          <h5 class="font-weight-bold mb-3">Quik Start</h5>
-          <p class="mb-0">Upload here to your resource!!!</p>
+          <form [formGroup]="formTemplate" (submit)= "uploadImages(formTemplate.value)">
+  
+  
+          <div class="form-group"><br>
+  
+              <input type="file"  class="form-control" formControlName="imageUrl" (change)="detectFiles($event )">
+                <div class="text-danger" *ngIf="isSubmitted && !! formControls.imageUrl.errors?.required">This field is required.</div>
+          </div>
+        <div class="form-group">
+        <select formControlName="category" class="form-control">
+          <option value="Agriculture and cropes">Agriculture and cropes</option>
+          <option value="Health and fitness" >Health and fitness</option>
+          <option value="Education">Education</option>
+          <option value="Science and technology">Science and technology</option>
+          <option value="Money and finance">Money and finance</option>
+          <option value="Vehicle and transport">Vehicle and transport</option>
+        </select>
+          <br>
+        <select formControlName="type" class="form-control">
+          <option value="image">Image</option>
+          <option value="file" >File</option>
+          <option value="video">Video</option>
+        </select>
+  
+        <div class="text-danger" *ngIf="isSubmitted && !! formControls.category.errors?.required">This field is required.</div>
+      </div>
+        <div class="form-group" style="text-align: center">
+         <button  type= "submit" class="btn btn-danger" >Upload</button>
+        </div>
+          <br>
+          <div class="form-group" style="text-align: center">
+          <button type="reset" class="btn btn-success btn-rounded" id="reset-btn" (click)="resetForm()">Reset?</button>
+        </div>
+      </form>
+      </div>
+    </div>
+    </div>
+  
+    <div class="view view-cascade ">
+      <div class="card" style="width: 20rem;">
+        <div class="card-body text-white">
+          <h5 class="font-weight-bold mb-3">Success Area</h5>
+          <p class="mb-0">Success?</p>
         </div>
         <ul class="list-group list-group-flush">
-
+          <div *ngIf="currentUpload">
+            <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
+            progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete;</div>
         </ul>
-        <div class="card-body">
-          <a href="#!" class="card-link">Home</a>
-          <a href="#!" class="card-link">Resources</a>
-        </div>
+  
       </div>
     </div>
-
-
-<div class=" card">
-    <div class="view view-cascade gradient-card-header morpheus-den-gradient">
-      <div class="card-body">
-        <form [formGroup]="formTemplate" (submit)= "uploadImages(formTemplate.value)">
-
-
-        <div class="form-group"><br>
-
-            <input type="file"  class="form-control" formControlName="imageUrl" (change)="detectFiles($event )">
-              <div class="text-danger" *ngIf="isSubmitted && !! formControls.imageUrl.errors?.required">This field is required.</div>
-        </div>
-      <div class="form-group">
-      <select formControlName="category" class="form-control">
-        <option value="Agriculture and cropes">Agriculture and cropes</option>
-        <option value="Health and fitness" >Health and fitness</option>
-        <option value="Education">Education</option>
-        <option value="Science and technology">Science and technology</option>
-        <option value="Money and finance">Money and finance</option>
-        <option value="Vehicle and transport">Vehicle and transport</option>
-      </select>
-        <br>
-      <select formControlName="type" class="form-control">
-        <option value="image">Image</option>
-        <option value="file" >File</option>
-        <option value="video">Video</option>
-      </select>
-
-      <div class="text-danger" *ngIf="isSubmitted && !! formControls.category.errors?.required">This field is required.</div>
     </div>
-      <div class="form-group">
-       <button  type= "submit" class="btn btn-danger" >Upload</button>
-      </div>
-        <br>
-        <div class="form-group">
-        <button type="reset" class="btn btn-success" id="reset-btn" (click)="resetForm()">Reset?</button>
-      </div>
-    </form>
+    <br>
+  
+    <div style="text-align: center">
+    <button mdbBtn type="button" color="primary" rounded="true" onclick="location.href='/rccenter'" mdbWavesEffect>Home</button>
+    <button mdbBtn type="button" color="secondary" rounded="true"  onclick="location.href='rccenter/gallery'" mdbWavesEffect>Resources</button>
     </div>
-  </div>
-  </div>
-
-  <div class="view view-cascade gradient-card-header morpheus-den-gradient">
-    <div class="card" style="width: 20rem;">
-      <div class="card-body">
-        <h5 class="font-weight-bold mb-3">Success Area</h5>
-        <p class="mb-0">Success?</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <div *ngIf="currentUpload">
-          <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
-          progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete;</div>
-      </ul>
-
-    </div>
-  </div>
-  </div>
-  <br>
-
-  <p align="center">
-      <button mdbBtn type="button" color="primary" rounded="true" onclick="location.href='/home'" mdbWavesEffect>Home</button>
-  <button mdbBtn type="button" color="secondary" rounded="true"  onclick="location.href='/gallery'" mdbWavesEffect>Resources</button>
-  </p>
-  </body>
+    </body>
+  
