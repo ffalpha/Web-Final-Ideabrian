@@ -1,3 +1,82 @@
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color" [containerInside]="false">
+
+  <!-- Navbar brand -->
+  <mdb-navbar-brand>
+      <div class="postionLogo">
+          <div class="navbar-brand">Idea Brain</div>
+      </div>
+  </mdb-navbar-brand>
+  <!-- Collapsible content -->
+
+
+
+  <!-- Links -->
+  <div class="alignLinks">
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+              <a href="/cat" routerLinkActive="router-link-active" class="nav-link waves-light" mdbWavesEffect>Issue center</a>
+          </li>
+          <div class="alignItem">
+              <li class="nav-item">
+                  <a href="/rccenter" routerLinkActive="router-link-active" class="nav-link waves-light" mdbWavesEffect>Resource center</a>
+              </li>
+          </div>
+          <div class="alignItem">
+              <li class="nav-item">
+                  <a href="/chat" routerLinkActive="router-link-active" class="nav-link waves-light" mdbWavesEffect>Chat</a>
+              </li>
+          </div>
+          
+      </ul>
+  </div>
+
+  <!-- Links -->
+  <div class="profileIcon">
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+
+          <li class="nav-item">
+
+              <a href="/dashboard" routerLinkActive="router-link-active" class="nav-link">
+                  profile&nbsp;<i class="far fa-user-circle"></i>
+              </a>
+          </li>
+
+          <div class="devider">
+              |
+          </div>
+
+          <li class="nav-item">
+              <a href="/not" routerLinkActive="router-link-active" class="nav-link">
+                    Notifications&nbsp;
+                     <!-- Change icon if there are new notifications  -->
+              </a>
+          </li>
+
+          <div class="devider">
+              |
+          </div>
+
+          <li class="nav-item">
+              <a class="nav-link" >
+              logout&nbsp;<i class="fas fa-sign-out-alt"></i>
+          </a>
+
+          </li>
+
+      </ul>
+  </div>
+</mdb-navbar>
+
+
+
+
+
+
+
+
+
+
 
 <body>
   <!--Card--><br><br>
@@ -35,7 +114,7 @@
       
       <hr>
       <!--Text-->
-      <p class="font-small grey-dark-text mb-0">Category: <strong >{{item.cat}} </strong> </p>
+      <p class="font-small grey-dark-text mb-0">Uploaded by: <strong >{{item.uploader}} </strong> </p>
       <p class="font-small grey-dark-text mb-0">Type: <strong >{{item.type}} </strong> </p>
       <div style="text-align: center">
       <a href="{{item.url}}" class="waves-light">
@@ -63,7 +142,7 @@
   <!--/.Card-->
 
   <p align="center">
-  <button mdbBtn type="button" color="primary" rounded="true" onclick="location.href='/rccenter'" mdbWavesEffect>Home</button>
+  <button mdbBtn type="button" color="secondary" rounded="true" onclick="location.href='/rccenter'" mdbWavesEffect>Home</button>
   <button mdbBtn type="button" color="secondary" rounded="true"  onclick="location.href='rccenter/upload-form'" mdbWavesEffect>Upload</button>
 
   </p>

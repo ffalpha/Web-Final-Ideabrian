@@ -1,14 +1,100 @@
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color" [containerInside]="false">
+
+  <!-- Navbar brand -->
+  <mdb-navbar-brand>
+      <div class="postionLogo">
+          <div class="navbar-brand">Idea Brain</div>
+      </div>
+  </mdb-navbar-brand>
+  <!-- Collapsible content -->
+
+
+
+  <!-- Links -->
+  <div class="alignLinks">
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+              <a href="/cat" routerLinkActive="router-link-active" class="nav-link waves-light" mdbWavesEffect>Issue center</a>
+          </li>
+          <div class="alignItem">
+              <li class="nav-item">
+                  <a href="/rccenter" routerLinkActive="router-link-active" class="nav-link waves-light" mdbWavesEffect>Resource center</a>
+              </li>
+          </div>
+          <div class="alignItem">
+              <li class="nav-item">
+                  <a href="/chat" routerLinkActive="router-link-active" class="nav-link waves-light" mdbWavesEffect>Chat</a>
+              </li>
+          </div>
+          
+      </ul>
+  </div>
+
+  <!-- Links -->
+  <div class="profileIcon">
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+
+          <li class="nav-item">
+
+              <a href="/dashboard" routerLinkActive="router-link-active" class="nav-link">
+                  profile&nbsp;<i class="far fa-user-circle"></i>
+              </a>
+          </li>
+
+          <div class="devider">
+              |
+          </div>
+
+          <li class="nav-item">
+              <a href="/not" routerLinkActive="router-link-active" class="nav-link">
+                    Notifications&nbsp;
+                     <!-- Change icon if there are new notifications  -->
+              </a>
+          </li>
+
+          <div class="devider">
+              |
+          </div>
+
+          <li class="nav-item">
+              <a class="nav-link" >
+              logout&nbsp;<i class="fas fa-sign-out-alt"></i>
+          </a>
+
+          </li>
+
+      </ul>
+  </div>
+</mdb-navbar>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <body>
-  <section class="section">
+<section class="section">
       <br><br><br><br>
         <!-- Section description -->
-  
+
         <!--Grid row-->
         <div class="row">
-  
+
           <!--Grid column-->
           <div class="col-md-6 mb-4">
-            <mdb-card style="background-image: url('https://mdbootstrap.com/img/Photos/Others/img%20%2832%29.jpg')">
+            <mdb-card >
               <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
                 <div>
                   <h3 class="card-title py-3 font-weight-bold"><strong>Upload</strong></h3>
@@ -21,10 +107,10 @@
             </mdb-card>
           </div>
           <!--Grid column-->
-  
+
           <!--Grid column-->
           <div class="col-md-6 mb-4">
-            <mdb-card style="background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/Nature/6-col/img%20%2873%29.jpg')">
+            <mdb-card >
               <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
                 <div>
                   <h3 class="card-title py-3 font-weight-bold"><strong>Gallery</strong></h3>
@@ -32,22 +118,135 @@
                   <a mdbBtn color="pink" rounded="true" [routerLink]="['gallery']">
                     <mdb-icon fas icon="clone" class="left"></mdb-icon> Resources
                   </a>
-  
+
                </div>
               </div>
             </mdb-card>
           </div>
           <!--Grid column-->
-  
-  
-  
-  
+
+
+
+
         </div>
         <!--Grid row-->
+</section>
+ <!--Projects section v.4-->
+
+
+<!--Section: Features v.4-->
+<section>
+
+  <!--Section heading-->
+  <h2 class="h1 py-5 font-weight-bold text-center ">Why is it so special?</h2>
+  <!--Section description-->
   
-  
-  
-      </section>
-      <!--Projects section v.4-->
+
+  <!--Grid row-->
+  <div class="row">
+
+    <!--Grid column-->
+    <div class="col-md-4">
+
+      <!--Grid row-->
+      <div class="row mb-2">
+        <div class="col-2">
+          <i class="fas fa-2x fa-flag-checkered deep-purple-text"></i>
+        </div>
+        <div class="col-10 text-left">
+          <h5 class="font-weight-bold black-text">International</h5>
+          <p class="font-weight-bold -text">It can use worlwide people, anywhere and anytime....</p>
+        </div>
+      </div>
+      <!--Grid row-->
+
+      <!--Grid row-->
+      <div class="row mb-2">
+        <div class="col-2">
+          <i class="fas fa-2x fa-flask deep-purple-text"></i>
+        </div>
+        <div class="col-10 text-left">
+          <h5 class="font-weight-bold black-text">Experimental</h5>
+          <p class="font-weight-bold black-text">If you have a new invention or new idea, share with world.....</p>
+        </div>
+      </div>
+      <!--Grid row-->
+
+      <!--Grid row-->
+      <div class="row mb-2">
+        <div class="col-2">
+          <i class="fas fa-2x fa-glass-martini deep-purple-text"></i>
+        </div>
+        <div class="col-10 text-left">
+          <h5 class="font-weight-bold black-text">Relaxing</h5>
+          <p class="font-weight-bold black-text">Relax your mind and think ideas.How to solve this?</p>
+        </div>
+      </div>
+      <!--Grid row-->
+
+    </div>
+    <!--Grid column-->
+
+    <!--Grid column-->
+    <div class="col-md-4 mb-2 center-on-small-only flex-center">
+      <img src="https://mdbootstrap.com/img/Mockups/Transparent/Small/iphone-portfolio1.png" alt="" class="z-depth-0">
+    </div>
+    <!--Grid column-->
+
+    <!--Grid column-->
+    <div class="col-md-4">
+
+      <!--Grid row-->
+      <div class="row mb-2">
+        <div class="col-2">
+          <i class="fas fa-2x fa-heart deep-purple-text"></i>
+        </div>
+        <div class="col-10 text-left">
+          <h5 class="font-weight-bold black-text">Beloved</h5>
+          <p class="font-weight-bold black-text">Love your idea and past it... </p>
+        </div>
+      </div>
+      <!--Grid row-->
+
+      <!--Grid row-->
+      <div class="row mb-2">
+        <div class="col-2">
+          <i class="fas fa-2x fa-bolt deep-purple-text"></i>
+        </div>
+        <div class="col-10 text-left">
+          <h5 class="font-weight-bold black-text">Rapid</h5>
+          <p class="font-weight-bold black-text">Your solution is faster than others'solution?</p>
+        </div>
+      </div>
+      <!--Grid row-->
+
+      <!--Grid row-->
+      <div class="row mb-2">
+        <div class="col-2">
+          <i class="fas fa-2x fa-magic deep-purple-text"></i>
+        </div>
+        <div class="col-10 text-left">
+          <h5 class="font-weight-bold black-text">Storage</h5>
+          <p class="font-weight-bold black-text">Nice one.Try it?</p>
+        </div>
+      </div>
+      <!--Grid row-->
+
+    </div>
+    <!--Grid column-->
+
+  </div>
+  <!--Grid row-->
+
+</section>
+<!--/Section: Features v.4-->
+
+
+
+
+
+
+
+
+
     </body>
-  
