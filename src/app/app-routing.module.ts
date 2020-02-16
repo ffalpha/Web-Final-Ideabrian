@@ -9,17 +9,15 @@ import { SignupFormComponent } from './login/signup-form/signup-form.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ForgotPasswordComponent } from './login/forgot-password/forgot-password.component';
 import { VarifyEmailComponent } from './login/varify-email/varify-email.component';
-import { SecureInnerPages } from './login/guard/secure-inner-pages.guard';
-import { AuthGuard } from './login/guard/auth.guard';
+import { SecureInnerPages } from './guards/secure-inner-pages.guard';
+import { AuthGuard } from './guards/auth.guard';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { ChatComponent } from './chat/chat.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { TestComponentComponent } from './test-component/test-component.component';
-
-
+import { HomePageComponent } from './home-page/home-page.component'; 
 
 
 const routes: Routes = [ 
+  //issue center related 
   {path: 'newPost/:id', component: PostWriterComponent  , canActivate:[AuthGuard]}, 
   {path: 'a/:id', component: AlgoliaPostsComponent  , canActivate:[AuthGuard]}, 
   {path: '', component: CatagoryPageComponent , canActivate:[AuthGuard]}, 
@@ -28,11 +26,8 @@ const routes: Routes = [
   
   {path:'home',component:HomePageComponent},
  
-
   //notofications 
-  {path: 'not', component: NotificationsComponent },   
-  {path: 't', component: TestComponentComponent},   
- 
+  {path: 'not', component: NotificationsComponent , canActivate:[AuthGuard] },    
 
   //authentication related 
   { path: '', redirectTo: '/sign-in', pathMatch: 'full'},
@@ -40,21 +35,18 @@ const routes: Routes = [
   { path: 'register-user', component: SignupFormComponent  , canActivate:[SecureInnerPages] },
   { path: 'dashboard', component: ProfileComponent  , canActivate:[AuthGuard] },
   { path: 'forgot-password', component: ForgotPasswordComponent  , canActivate:[SecureInnerPages] },
-  { path: 'verify-email-address', component: VarifyEmailComponent ,canActivate:[SecureInnerPages]   },
- // { path: 'verify-email-address', component: VarifyEmailComponent  , canActivate:[SecureInnerPages] },
-
-
+  { path: 'verify-email-address', component: VarifyEmailComponent ,canActivate:[SecureInnerPages]   }, 
 
   //home and static web pages 
   { path: 'home', component: HomePageComponent  },
  
-    //chat
-    { path: 'chat', component: ChatComponent  , canActivate:[AuthGuard] },
+  //chat
+  { path: 'chat', component: ChatComponent  , canActivate:[AuthGuard] },
  
+  //resource ceneter 
+  {path:"rccenter",loadChildren:()=>import("./rccenter/rccenter.module").then(m=>m.RccenterModule) },
 
-    //resource ceneter 
-    {path:"rccenter",loadChildren:()=>import("./rccenter/rccenter.module").then(m=>m.RccenterModule) },
-  ];
+];
  
 
 @NgModule({

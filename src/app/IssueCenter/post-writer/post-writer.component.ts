@@ -157,9 +157,6 @@ export class PostWriterComponent implements OnInit {
       customTxt.innerHTML = "No file choosen yet.";
     }
 
-
-
-
   }
 
 

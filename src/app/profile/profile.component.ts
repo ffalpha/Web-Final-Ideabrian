@@ -19,11 +19,8 @@ export class ProfileComponent implements OnInit {
   uid: string;
   public changeName: FormGroup;
   public changePhoto: FormGroup;
-  constructor(
-    public authService: AuthService,
-    private afs: AngularFirestore,
-    private storage: AngularFireStorage
-  ) {}
+  
+  constructor(public authService: AuthService,private afs: AngularFirestore,private storage: AngularFireStorage) {}
 
   ngOnInit() {
     this.changeName = new FormGroup({
@@ -45,18 +42,12 @@ export class ProfileComponent implements OnInit {
 
   //update username of the user
   setUserName() {
-    this.afs
-      .collection("users")
-      .doc(this.uid)
-      .update({ displayName: this.changeName.get("newName").value });
+    this.afs.collection("users").doc(this.uid).update({ displayName: this.changeName.get("newName").value });
     this.updateUserData();
   }
 
   getUserData(uid) {
-    return this.afs
-      .collection("users")
-      .doc(uid)
-      .get();
+    return this.afs.collection("users").doc(uid).get();
   }
 
   updateUserData() {

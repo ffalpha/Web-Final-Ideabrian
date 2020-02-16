@@ -12,9 +12,8 @@
         <div class="ansBody">
             {{desc}}
         </div>
-
         <div class="solutionButtonContainer">
-            <button type="button" mdbBtn color="primary" mdbWavesEffect>Select as answer</button>
+            <button type="button" [hidden]="!visibility" mdbBtn color="primary" mdbWavesEffect (click)="selectAnswer(index)">Select as answer</button>
         </div>
 
     </div>
