@@ -1,7 +1,16 @@
 <div class="answerContainer">
-    <div class="answerBox">
+
+    <div [className]="isAnswer ? 'answerBoxSolved' : 'answerBox'">
+
+
 
         <div class="answerTitle">
+            <div *ngIf="isAnswer" class="answerNotification">
+                Answer
+            </div>
+
+
+
             <div class="imageHolder"><img src={{imagePath}} class="image" alt=""></div>
             <div class="titleData">
                 <div class="ansName">{{ansName}}</div>
@@ -15,6 +24,7 @@
         <div class="solutionButtonContainer">
             <button type="button" [hidden]="!visibility" mdbBtn color="primary" mdbWavesEffect (click)="selectAnswer(index)">Select as answer</button>
         </div>
+        <br>
 
     </div>
 </div>

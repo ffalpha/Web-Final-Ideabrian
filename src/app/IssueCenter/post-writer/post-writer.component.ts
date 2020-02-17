@@ -22,32 +22,23 @@ import { UserDetailsService} from "../../common/user-details.service";
 })
 export class PostWriterComponent implements OnInit {
 
-  public editorContent;
-  editorForm: FormGroup;
-  public postCatagory;
-  public postCatagoryLovercase;
-  public imageID;
-  public databaseName;
-  public userObject;
+  private editorContent;
+  private editorForm: FormGroup;
+  private postCatagory;
+  private postCatagoryLovercase;
+  private imageID;
+  private databaseName;
+  private userObject;
 
 
 
-  constructor(
-    private route: ActivatedRoute,
-    private afs: AngularFirestore,
-    private storage: AngularFireStorage,
-    private router:Router,
-    private user:UserDetailsService,
-  ) {
-
+  constructor(private route: ActivatedRoute,private afs: AngularFirestore,private storage: AngularFireStorage,private router:Router,private user:UserDetailsService) {
     this.user.getUser().subscribe(
       async doc => { 
           this.userObject  = await doc.data();  
           console.log( JSON.stringify(this.userObject) );    
       }
     );
-
-
   }
    
   // editor properties
@@ -80,7 +71,6 @@ export class PostWriterComponent implements OnInit {
           .test(parseInt(this.route.snapshot.paramMap.get("id")))
           .toLowerCase()
       );
-
       var id = parseInt(this.route.snapshot.paramMap.get("id"));
       this.postCatagory = selector1.test(id);
       this.databaseName = this.postCatagory.replace(" ", "_").replace(" ", "_");
@@ -96,8 +86,8 @@ export class PostWriterComponent implements OnInit {
   
   }  
 
- //file upload related 
 
+ //file upload related 
   onClickMe() {
     const realFileBtn = document.getElementById("real-file");
     realFileBtn.click();
@@ -229,7 +219,7 @@ export class PostWriterComponent implements OnInit {
             image: result, // this should be the image of the uploader but currently it's the image  related  to the post
             category: this.databaseName,
             uuid: uniqueID,
-            userID: uid ,//uid of the writer
+            uid: uid ,//uid of the writer
             comments: {0 : 0}
           };
  
@@ -244,5 +234,5 @@ export class PostWriterComponent implements OnInit {
         
       }
     );
-  }
+  } 
 }
