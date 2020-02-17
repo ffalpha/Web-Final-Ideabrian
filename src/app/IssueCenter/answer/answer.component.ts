@@ -8,7 +8,20 @@ import { AngularFirestore } from "@angular/fire/firestore";
 })
 export class AnswerComponent  {
 
-  constructor( private afs: AngularFirestore) { }
+  isAnswer:boolean ;
+  constructor( private afs: AngularFirestore) { 
+
+    if(!this.visibility){
+      if (this.answer == this.index) {
+        this.isAnswer = true;
+      }else{
+        this.isAnswer = false;
+      }
+    }
+    this.isAnswer = false;
+  }
+  
+  
 
   @Input() ansName: string;
   @Input() ansDate: string;
@@ -30,15 +43,18 @@ export class AnswerComponent  {
         status :"solved",
         answer: commentNumber
       }
+      this.answer = commentNumber
       docRef.set(answer,{merge: true})
       this.visibilityEvent.emit(false);
   }
   
-  get isAnswer(): boolean {
+get isAnaswer(): boolean {
     if(!this.visibility){
       return (this.answer == this.index) ? true:false
     }
       return false
   }
+
+  
  
 } 
