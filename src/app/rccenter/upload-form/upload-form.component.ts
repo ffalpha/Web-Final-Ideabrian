@@ -22,14 +22,14 @@ export class UploadFormComponent implements OnInit {
   selectedFiles: FileList;
   isSubmitted: boolean;
   currentUpload: Upload;
-  categ: string;
+  upl: string;
   tp: string;
   imageList: any[];
   rowIndexArray: any[];
 
 formTemplate = new FormGroup({
   imageUrl : new FormControl('', Validators.required),
-  category : new FormControl('', Validators.required),
+  uname : new FormControl('', Validators.required),
   type : new FormControl('', Validators.required),
 });
 
@@ -51,9 +51,9 @@ formTemplate = new FormGroup({
     const filesIndex = _.range(files.length);
     _.each(filesIndex, (idx) => {
       this.currentUpload = new Upload(files[idx]);
-      this.categ = formValue.category;
+      this.upl = formValue.uname;
       this.tp = formValue.type;
-      this.upSvc.pushUpload(this.currentUpload, this.categ, this.tp);
+      this.upSvc.pushUpload(this.currentUpload, this.upl, this.tp);
       });
     this.resetForm();
   }
@@ -73,7 +73,7 @@ formTemplate = new FormGroup({
     this.formTemplate.reset();
     this.formTemplate.setValue({
       imageUrl: '',
-      category: '',
+      uname: '',
       type: ''
     });
     this.selectedImage = null;
