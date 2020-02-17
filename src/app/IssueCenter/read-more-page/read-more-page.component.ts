@@ -100,7 +100,7 @@ export class ReadMorePageComponent implements OnInit {
           //set the solve button visibility status 
           const user = JSON.parse(localStorage.getItem('user'));
           const localuid = user['uid'].replace('"', "").replace('"', "")   
-          if ((this.uid===localuid ) && (! (this.solved==="solved") ) ){
+          if ((this.uid=== localuid ) && (! (this.solved ==="solved") ) ){
             this.haveToSolve = true;
             console.log("I have to select answer ", this.solved ); 
           }else{
