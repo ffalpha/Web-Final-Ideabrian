@@ -21,7 +21,7 @@ export class UploadService {
   rowIndexArray: any[];
   storageRef: any;
   state: boolean;
-  catego: string;
+  upl: string;
   typ: string;
   userDoc: any;
   data: any;
@@ -45,12 +45,12 @@ export class UploadService {
 
     ///////////////// get images //////////
     getUploads() {
-      return this.cf.collection(`digiresource/${this.basePath}`).snapshotChanges();
+      return this.cf.collection(`digiresource`).snapshotChanges();
     }
 
 
     /////////////////////////// upload image ///////////////////////////////////////////////
-      pushUpload(upload: Upload, category: string, typp: string) {
+      pushUpload(upload: Upload, upname: string, typp: string) {
         const storageRef = firebase.storage().ref();
         this.uploadTask = storageRef.child('digiresource/' + upload.file.name).put(upload.file); // upload.file.name
         this.uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
@@ -66,10 +66,9 @@ export class UploadService {
               this.cf.collection(this.basePath).add({
                   name: upload.file.name,
                   url: downloadURL,
-                  cat: category,
                   type: typp,
                   uid:"123",
-                  uploader:"hasini",
+                  uploader: upname,
                   
 
               });
