@@ -1,88 +1,161 @@
-
 <body >
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color" [containerInside]="false">
 
-<br><br>
+  <!-- Navbar brand -->
+  <mdb-navbar-brand>
+      <div class="postionLogo">
+          <div class="navbar-brand">Idea Brain</div>
+      </div>
+  </mdb-navbar-brand>
+  <!-- Collapsible content -->
 
 
 
-    <div class="card-deck">
-      <div class="view view-cascade gradient-card-header morpheus-den-gradient">
-      <div class="card" style="width: 20rem;">
-        <div class="card-body">
-          <h5 class="font-weight-bold mb-3">Quik Start</h5>
-          <p class="mb-0">Upload here to your resource!!!</p>
+  <!-- Links -->
+  <div class="alignLinks">
+      <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+              <a href="/cat" routerLinkActive="router-link-active" class="nav-link waves-light" mdbWavesEffect>Issue center</a>
+          </li>
+          <div class="alignItem">
+              <li class="nav-item">
+                  <a href="/rccenter" routerLinkActive="router-link-active" class="nav-link waves-light" mdbWavesEffect>Resource center</a>
+              </li>
+          </div>
+          <div class="alignItem">
+              <li class="nav-item">
+                  <a href="/chat" routerLinkActive="router-link-active" class="nav-link waves-light" mdbWavesEffect>Chat</a>
+              </li>
+          </div>
+          
+      </ul>
+  </div>
+
+  <!-- Links -->
+  <div class="profileIcon">
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+
+          <li class="nav-item">
+
+              <a href="/dashboard" routerLinkActive="router-link-active" class="nav-link">
+                  profile&nbsp;<i class="far fa-user-circle"></i>
+              </a>
+          </li>
+
+          <div class="devider">
+              |
+          </div>
+
+          <li class="nav-item">
+              <a href="/not" routerLinkActive="router-link-active" class="nav-link">
+                    Notifications&nbsp;
+                     <!-- Change icon if there are new notifications  -->
+              </a>
+          </li>
+
+          <div class="devider">
+              |
+          </div>
+
+          <li class="nav-item">
+              <a class="nav-link" >
+              logout&nbsp;<i class="fas fa-sign-out-alt"></i>
+          </a>
+
+          </li>
+
+      </ul>
+  </div>
+</mdb-navbar>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <br><br><br><br><br>
+  
+  
+  
+      <div class="card-deck">
+        <div class="view view-cascade ">
+        <div class="card" style="width: 20rem;">
+          
+          <ul class="list-group list-group-flush">
+            <mdb-card-img src="assets/images/5.gif" style="width: 200px, text center" ></mdb-card-img>
+          </ul>
+          <div class="card-body">
+            
+          </div>
         </div>
+      </div>
+  
+  
+  <div class=" card">
+      <div class="view view-cascade ">
+        <div class="card-body">
+          <form [formGroup]="formTemplate" (submit)= "uploadImages(formTemplate.value)">
+  
+  
+          <div class="form-group"><br>
+  
+              <input type="file"  class="form-control" formControlName="imageUrl" (change)="detectFiles($event )">
+                <div class="text-danger" *ngIf="isSubmitted && !! formControls.imageUrl.errors?.required">This field is required.</div>
+          </div>
+        <div class="form-group">
+          <input type="text"  class="form-control" formControlName="uname" placeholder="Enter your name">
+          <div class="text-danger" *ngIf="isSubmitted && !! formControls.category.errors?.required">This field is required.</div>
+        </div>
+          <br>
+          <div class="form-group">
+        <select formControlName="type" class="form-control">
+          <option value="image">Image</option>
+          <option value="file" >File</option>
+          <option value="video">Video</option>
+        </select>
+  
+        <div class="text-danger" *ngIf="isSubmitted && !! formControls.category.errors?.required">This field is required.</div>
+      </div>
+        <div class="form-group" style="text-align: center">
+         <button  type= "submit" class="btn btn-danger" >Upload</button>
+        </div>
+          <br>
+          <div class="form-group" style="text-align: center">
+          <button type="reset" class="btn btn-success btn-rounded" id="reset-btn" (click)="resetForm()">Reset?</button>
+        </div>
+      </form>
+      </div>
+    </div>
+    </div>
+  
+    <div class="view view-cascade ">
+      <div class="card" style="width: 20rem;">
+        
         <ul class="list-group list-group-flush">
-
+          
+          <mdb-card-img src="assets/images/QU3H.gif" style="width: 200px, text center" ></mdb-card-img>
+          
         </ul>
         <div class="card-body">
-          <a href="#!" class="card-link">Home</a>
-          <a href="#!" class="card-link">Resources</a>
+            
         </div>
       </div>
     </div>
-
-
-<div class=" card">
-    <div class="view view-cascade gradient-card-header morpheus-den-gradient">
-      <div class="card-body">
-        <form [formGroup]="formTemplate" (submit)= "uploadImages(formTemplate.value)">
-
-
-        <div class="form-group"><br>
-
-            <input type="file"  class="form-control" formControlName="imageUrl" (change)="detectFiles($event )">
-              <div class="text-danger" *ngIf="isSubmitted && !! formControls.imageUrl.errors?.required">This field is required.</div>
-        </div>
-      <div class="form-group">
-      <select formControlName="category" class="form-control">
-        <option value="Agriculture and cropes">Agriculture and cropes</option>
-        <option value="Health and fitness" >Health and fitness</option>
-        <option value="Education">Education</option>
-        <option value="Science and technology">Science and technology</option>
-        <option value="Money and finance">Money and finance</option>
-        <option value="Vehicle and transport">Vehicle and transport</option>
-      </select>
-        <br>
-      <select formControlName="type" class="form-control">
-        <option value="image">Image</option>
-        <option value="file" >File</option>
-        <option value="video">Video</option>
-      </select>
-
-      <div class="text-danger" *ngIf="isSubmitted && !! formControls.category.errors?.required">This field is required.</div>
+  </div>
+    <br>
+  
+    <div style="text-align: center">
+    <button mdbBtn type="button" color="secondary" rounded="true" onclick="location.href='/rccenter'" mdbWavesEffect>Home</button>
+    <button mdbBtn type="button" color="secondary" rounded="true"  onclick="location.href='rccenter/gallery'" mdbWavesEffect>Resources</button>
     </div>
-      <div class="form-group">
-       <button  type= "submit" class="btn btn-danger" >Upload</button>
-      </div>
-        <br>
-        <div class="form-group">
-        <button type="reset" class="btn btn-success" id="reset-btn" (click)="resetForm()">Reset?</button>
-      </div>
-    </form>
-    </div>
-  </div>
-  </div>
-
-  <div class="view view-cascade gradient-card-header morpheus-den-gradient">
-    <div class="card" style="width: 20rem;">
-      <div class="card-body">
-        <h5 class="font-weight-bold mb-3">Success Area</h5>
-        <p class="mb-0">Success?</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <div *ngIf="currentUpload">
-          <progress class="progress is-success" min=1 max=100 value="{{ currentUpload?.progress }}"></progress>
-          progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete;</div>
-      </ul>
-
-    </div>
-  </div>
-  </div>
-  <br>
-
-  <p align="center">
-      <button mdbBtn type="button" color="primary" rounded="true" onclick="location.href='/home'" mdbWavesEffect>Home</button>
-  <button mdbBtn type="button" color="secondary" rounded="true"  onclick="location.href='/gallery'" mdbWavesEffect>Resources</button>
-  </p>
-  </body>
+    </body>
+  

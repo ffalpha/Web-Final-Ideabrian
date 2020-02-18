@@ -3,7 +3,7 @@ export class Upload {
     file: File;
     name: string;
     url: string;
-    cat: string;
+    uploader: string;
     type: string;
     progress: number;
     createdAt: Date = new Date();
