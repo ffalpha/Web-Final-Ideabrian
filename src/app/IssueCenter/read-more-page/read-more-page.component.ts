@@ -96,6 +96,7 @@ export class ReadMorePageComponent implements OnInit {
             arr_names[a - 1] = this.documentObject["comments"][a];
           }
 
+ 
           //set the solve button visibility status  
           var user1 = JSON.parse(localStorage.getItem('user'));
           const localUID = user1['uid'].replace('"', "").replace('"', "")   
@@ -106,6 +107,7 @@ export class ReadMorePageComponent implements OnInit {
 
           
           if ((this.uid=== localUID ) && (! (this.solved ==="solved") ) ){
+ 
             this.haveToSolve = true;
             console.log("I have to select answer ", this.solved ); 
           }else{
