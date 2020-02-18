@@ -9,16 +9,15 @@ import { Component, OnInit, Input } from '@angular/core';
 
 export class PostComponent  {
 
-  @Input() name: string;
-  @Input() url: string;
-  @Input() content: string;
-  @Input() rating: string;
-  @Input() date: string;
-  @Input() solved: string;
-  @Input() id: string;
-  @Input() title: string;
+    //input parameters for the component
+    @Input() name: string;
+    @Input() url: string;
+    @Input() content: string;
+    @Input() rating: string;
+    @Input() date: string;
+    @Input() solved: string;
+    @Input() id: string;
+    @Input() title: string;
 
-  constructor() { }
-
-
+  constructor() {}
 }

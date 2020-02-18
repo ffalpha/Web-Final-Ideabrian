@@ -33,7 +33,7 @@ export class AlgoliaPostsComponent implements OnInit {
   } 
 
    //there will be no search results as default
-   showResults = false ;
+   showResults = true ;
 
    //change search results showing status 
    searchChanged(query){

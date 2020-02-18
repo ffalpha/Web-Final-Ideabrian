@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CatagoryCardComponent implements OnInit {
 
-  @Input() descriptions : string;
+   
   @Input() image : string; 
   @Input() title : string;
   constructor() { }
