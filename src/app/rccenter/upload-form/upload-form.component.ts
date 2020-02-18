@@ -27,6 +27,7 @@ export class UploadFormComponent implements OnInit {
   imageList: any[];
   rowIndexArray: any[];
 
+//////////////////////////// form validation//////////////////////////
 formTemplate = new FormGroup({
   imageUrl : new FormControl('', Validators.required),
   uname : new FormControl('', Validators.required),
@@ -38,7 +39,8 @@ formTemplate = new FormGroup({
   ngOnInit() {
     this.resetForm();
   }
-  //////////  for image/////////////////////////////////////////////////////
+
+  //////////  for resource/////////////////////////////////////////////////////
   detectFiles(event: any) {
     this.selectedFiles = event.target.files;
     console.log(event);

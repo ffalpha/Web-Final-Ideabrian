@@ -1,9 +1,11 @@
+
 import { Component, OnInit } from '@angular/core';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { UploadService } from '../shared/upload.service';
 import { Upload } from '../shared/upload';
 import {  AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { AngularFirestore } from 'angularfire2/firestore';
+
 
 
 @Component({
@@ -42,6 +44,7 @@ rowIndexArray: any[];
     }
   );
   }
+
    deleteimage(item) { this.upSvc.deleteimages(item); }
 
 

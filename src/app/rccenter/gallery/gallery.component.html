@@ -1,151 +1,136 @@
 <body>
-<!--Navbar-->
-<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color" [containerInside]="false">
 
-  <!-- Navbar brand -->
-  <mdb-navbar-brand>
-      <div class="postionLogo">
-          <div class="navbar-brand">Idea Brain</div>
-      </div>
-  </mdb-navbar-brand>
-  <!-- Collapsible content -->
-
-
-
-  <!-- Links -->
-  <div class="alignLinks">
-      <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-              <a href="/cat" routerLinkActive="router-link-active" class="nav-link waves-light" mdbWavesEffect>Issue center</a>
-          </li>
-          <div class="alignItem">
-              <li class="nav-item">
-                  <a href="/rccenter" routerLinkActive="router-link-active" class="nav-link waves-light" mdbWavesEffect>Resource center</a>
-              </li>
-          </div>
-          <div class="alignItem">
-              <li class="nav-item">
-                  <a href="/chat" routerLinkActive="router-link-active" class="nav-link waves-light" mdbWavesEffect>Chat</a>
-              </li>
-          </div>
-          
-      </ul>
-  </div>
-
-  <!-- Links -->
-  <div class="profileIcon">
-      <ul class="navbar-nav ml-auto nav-flex-icons">
-
-          <li class="nav-item">
-
-              <a href="/dashboard" routerLinkActive="router-link-active" class="nav-link">
-                  profile&nbsp;<i class="far fa-user-circle"></i>
-              </a>
-          </li>
-
-          <div class="devider">
-              |
-          </div>
-
-          <li class="nav-item">
-              <a href="/not" routerLinkActive="router-link-active" class="nav-link">
-                    Notifications&nbsp;
-                     <!-- Change icon if there are new notifications  -->
-              </a>
-          </li>
-
-          <div class="devider">
-              |
-          </div>
-
-          <li class="nav-item">
-              <a class="nav-link" >
-              logout&nbsp;<i class="fas fa-sign-out-alt"></i>
-          </a>
-
-          </li>
-
-      </ul>
-  </div>
-</mdb-navbar>
-
-
-
-
-
-
-
-
-
-
-
-
-  <!--Card--><br><br>
+  <!--Navbar-->
+  <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color" [containerInside]="false">
   
-
-   <div class="img-fluid  text-white">
-  <ul *ngFor="let item of imageList" class="collection">
-
-  <div class="col-md-6 mb-6">
-    <mdb-card cascade="true" narrower="true" >
-
-    <!--Card image-->
-    <div class="container">
-    <div class="view overlay waves-light" mdbWavesEffect>
-      <mdb-card-img src="assets/images/img.png" style="width: 20px" ></mdb-card-img>
-      <a>
-        <div class="mask rgba-white-slight"></div>
-      </a>
-
+    <!-- Navbar brand -->
+    <mdb-navbar-brand>
+        <div class="postionLogo">
+            <div class="navbar-brand">Idea Brain</div>
+        </div>
+    </mdb-navbar-brand>
+    <!-- Collapsible content -->
+  
+  
+  
+    <!-- Links -->
+    <div class="alignLinks">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a href="/cat" routerLinkActive="router-link-active" class="nav-link waves-light" mdbWavesEffect>Issue center</a>
+            </li>
+            <div class="alignItem">
+                <li class="nav-item">
+                    <a href="/rccenter" routerLinkActive="router-link-active" class="nav-link waves-light" mdbWavesEffect>Resource center</a>
+                </li>
+            </div>
+            <div class="alignItem">
+                <li class="nav-item">
+                    <a href="/chat" routerLinkActive="router-link-active" class="nav-link waves-light" mdbWavesEffect>Chat</a>
+                </li>
+            </div>
+  
+        </ul>
     </div>
-  </div>
-    <!--/.Card image-->
-
-
-
-
-    <!--Card content-->
-    <mdb-card-body>
-
+  
+    <!-- Links -->
+    <div class="profileIcon">
+        <ul class="navbar-nav ml-auto nav-flex-icons">
+  
+            <li class="nav-item">
+  
+                <a href="/dashboard" routerLinkActive="router-link-active" class="nav-link">
+                    profile&nbsp;<i class="far fa-user-circle"></i>
+                </a>
+            </li>
+  
+            <div class="devider">
+                |
+            </div>
+  
+            <li class="nav-item">
+                <a href="/not" routerLinkActive="router-link-active" class="nav-link">
+                      Notifications&nbsp;
+                       <!-- Change icon if there are new notifications  -->
+                </a>
+            </li>
+  
+            <div class="devider">
+                |
+            </div>
+  
+            <li class="nav-item">
+                <a class="nav-link" >
+                logout&nbsp;<i class="fas fa-sign-out-alt"></i>
+            </a>
+  
+            </li>
+  
+        </ul>
+    </div>
+  </mdb-navbar>
+  
+  
+  
+  
+  <br><br>
+  
+  
+    <div class="img-fluid  text-white">
+      <ul *ngFor="let item of imageList" class="collection">
+  
+          <div class="col-md-6 mb-6">
+              <mdb-card cascade="true" narrower="true" >
+  
+      <!--Card image-->
+               <div class="container">
+                  <div class="view overlay waves-light" mdbWavesEffect>
+                      <mdb-card-img src="assets/images/img.png" style="width: 20px" ></mdb-card-img>
+                        <a>
+                         <div class="mask rgba-white-slight"></div>
+                        </a>
+                  </div>
+               </div>
+      <!--/.Card image-->
+  
+      <!--Card content-->
+                <mdb-card-body>
       <!--Title-->
-      <mdb-card-title>
-        <h4><strong >{{item.name}}</strong></h4>
-      </mdb-card-title>
-
-      
-      <hr>
-      <!--Text-->
-      <p class="font-small grey-dark-text mb-0">Uploaded by: <strong >{{item.uploader}} </strong> </p>
-      <p class="font-small grey-dark-text mb-0">Type: <strong >{{item.type}} </strong> </p>
-      <div style="text-align: center">
-      <a href="{{item.url}}" class="waves-light">
-        <h5 class="text-white" mdbWavesEffect> Download
-          <mdb-icon fas icon="chevron-right" class="text-white" mdbWavesEffect></mdb-icon>
-        </h5>
-      </a>
+                  <mdb-card-title>
+                      <h4><strong >{{item.name}}</strong></h4>
+                  </mdb-card-title>
+                <hr>
+        <!--Text-->
+                <p class="font-small grey-dark-text mb-0">Uploaded by: <strong >{{item.uploader}} </strong> </p>
+                <p class="font-small grey-dark-text mb-0">Type: <strong >{{item.type}} </strong> </p>
+                     <div style="text-align: center">
+                        <a href="{{item.url}}" class="waves-light">
+                          <h5 class="text-white" mdbWavesEffect> Download
+                            <mdb-icon fas icon="chevron-right" class="text-white" mdbWavesEffect></mdb-icon>
+                          </h5>
+                        </a>
+                      </div>
+                <br>
+                      <div style="text-align: center">
+                         <button class="btn btn-success" (click)="deleteimage(item)"> Delete</button>
+                      </div>
+                </mdb-card-body>
+      <!--/.Card content-->
+  
+      <!-- Card footer -->
+                <mdb-card-footer class="mdb-color lighten-3 text-center"></mdb-card-footer>
+      <!-- Card footer -->
+              </mdb-card>
+          </div>
+      </ul>
     </div>
-      <br>
-      <div style="text-align: center">
-      <button class="btn btn-success" (click)="deleteimage(item)"> Delete</button>
-      </div>
-    </mdb-card-body>
-    <!--/.Card content-->
-
-    <!-- Card footer -->
-    <mdb-card-footer class="mdb-color lighten-3 text-center">
-
-    </mdb-card-footer>
-    <!-- Card footer -->
-  </mdb-card>
-  </div>
-  </ul>
-  </div>
-  <!--/.Card-->
-
-  <p align="center">
-  <button mdbBtn type="button" color="secondary" rounded="true" onclick="location.href='/rccenter'" mdbWavesEffect>Home</button>
-  <button mdbBtn type="button" color="secondary" rounded="true"  onclick="location.href='rccenter/upload-form'" mdbWavesEffect>Upload</button>
-
-  </p>
-  <!------>
-  </body>
+    <!--/.Card-->
+  
+    <div style="text-align: center">
+    <button class=" button4" type="button" color="secondary"  onclick="location.href='/rccenter'" mdbWavesEffect>Home</button>
+    <button class=" button4" type="button" color="secondary"   onclick="location.href='rccenter/upload-form'" mdbWavesEffect>Upload</button>
+    </div>
+  
+    <!------>
+    </body>
+  
