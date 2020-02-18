@@ -17,6 +17,8 @@ export class SecureInnerPages implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
+    
+    //this guard is active (restricts components ) if  a user is currently  logged in 
     if (this.authService.isLoggedIn) {
       window.alert('You should log out to access this page ');
       this.router.navigate(['dashboard']);

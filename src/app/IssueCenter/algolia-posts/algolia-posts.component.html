@@ -1,5 +1,5 @@
-
-<app-navbar></app-navbar>
+<app-navbar>
+</app-navbar>
 
 <div class="mainContainer">
 
@@ -11,21 +11,26 @@
 
     <div class="titleOfPage">{{postCatagory}} </div>
 
+    <!--Algolia API keys  -->
     <ais-instantsearch [config]="{
               apiKey: '8b42308ab95e76f5520f09a2b135cb4f',
               appId: '4OMR9ESZ2H',
               indexName: databaseName,
               routing: true
             }">
-        <!--want to change  indexName: 'groupProjectAlgolia' according to the url parameter  -->
 
+        <!-- search box-->
         <div class="searchBar">
-            <ais-search-box></ais-search-box>
+            <ais-search-box (change)="searchChanged($event)"></ais-search-box>
         </div>
 
-
+        <!-- Answer displaying area -->
         <div class="postGrandpa">
-            <div class="postContainersParent">
+            <div *ngIf="!showResults" class="postContainersParent">
+                <br> Enter keywords to search
+            </div>
+            <div *ngIf="showResults" class="postContainersParent">
+
                 <ais-hits>
                     <ng-template let-hits=" hits  ">
                         <div *ngFor="let hit of hits">
@@ -35,6 +40,7 @@
                     </ng-template>
                 </ais-hits>
             </div>
+
         </div>
 
     </ais-instantsearch>
