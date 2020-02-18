@@ -3,8 +3,8 @@
 <div class="cardContainer">
     <div class="card1" *ngFor="let item of titles; let i = index">
         <div class="cardBox">
-            <a routerLink="../a/{i}">
-                <app-catagory-card [title]="titles[i]" [image]="images[i]"> </app-catagory-card>
+            <a href=" {{links[i]}}">
+                <app-catagory-card [title]=" titles[i] " [image]=" images[i] "> </app-catagory-card>
             </a>
         </div>
     </div>
