@@ -37,7 +37,9 @@
         </div>
 
         <div *ngFor="let item of comments; let i = index">
+ 
             <app-answer (visibilityEvent)="selectAnswer($event)" [imagePath]="item.profilePic" [ansName]="item.name" [ansDate]="item.date" [desc]="item.desc" [visibility]=" haveToSolve " [index]="i + 1" [uid]="uuid" [category]="databaseName" [answer]=" this.answer "></app-answer>
+ 
         </div>
 
         <div class="writeAnswer " [hidden]="  (solved=='solved') ">
