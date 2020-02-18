@@ -56,7 +56,7 @@ export class ChatServiceService {
       from: this.user['email'],
       uid:this.user['uid'],
       message: chatObj["Msg"],
-      photoUrl: this.user['photoURL'],
+      photoURL: this.user['photoURL'],
       createdAt: new Date()
     };
    
