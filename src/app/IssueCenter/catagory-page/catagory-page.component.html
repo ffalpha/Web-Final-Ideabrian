@@ -1,14 +1,11 @@
-<app-navbar></app-navbar> 
+<app-navbar></app-navbar>
+
 <div class="cardContainer">
-           <!--Ngfor gave me an alignment error -->
-
-          <div class="card1"><div class="cardBox"><a routerLink ="../a/1"><app-catagory-card [title]="titles[0]" [image]="images[0]"  [descriptions]="descriptions[0]"> </app-catagory-card></a></div></div>
-          <div class="card1"><div class="cardBox"><a routerLink ="../a/2"><app-catagory-card [title]="titles[1]" [image]="images[1]"  [descriptions]="descriptions[1]"> </app-catagory-card></a></div></div>
-          <div class="card1"><div class="cardBox"><a routerLink ="../a/3"><app-catagory-card [title]="titles[2]" [image]="images[2]"  [descriptions]="descriptions[2]"> </app-catagory-card></a></div></div>
-          <div class="card1"><div class="cardBox"><a routerLink ="../a/4"><app-catagory-card [title]="titles[3]" [image]="images[3]"  [descriptions]="descriptions[3]"> </app-catagory-card></a></div></div>
-          <div class="card1"><div class="cardBox"><a routerLink ="../a/5"><app-catagory-card [title]="titles[4]" [image]="images[4]"  [descriptions]="descriptions[4]"> </app-catagory-card></a></div></div>
-          <div class="card1"><div class="cardBox"><a routerLink ="../a/6"><app-catagory-card [title]="titles[5]" [image]="images[5]"  [descriptions]="descriptions[5]"> </app-catagory-card></a></div></div>
-
+    <div class="card1" *ngFor="let item of titles; let i = index">
+        <div class="cardBox">
+            <a href=" {{links[i]}}">
+                <app-catagory-card [title]=" titles[i] " [image]=" images[i] "> </app-catagory-card>
+            </a>
+        </div>
+    </div>
 </div>
-
- 

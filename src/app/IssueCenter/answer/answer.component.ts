@@ -22,7 +22,7 @@ export class AnswerComponent  {
   }
   
   
-
+ //input parameters of the component 
   @Input() ansName: string;
   @Input() ansDate: string;
   @Input() desc: string; 
@@ -33,7 +33,7 @@ export class AnswerComponent  {
   @Input() category: string; 
   @Input() answer: number; 
 
-
+  //output event 
   @Output() visibilityEvent  = new EventEmitter<boolean>();
 
   //select answer 
@@ -47,14 +47,5 @@ export class AnswerComponent  {
       docRef.set(answer,{merge: true})
       this.visibilityEvent.emit(false);
   }
-  
-get isAnaswer(): boolean {
-    if(!this.visibility){
-      return (this.answer == this.index) ? true:false
-    }
-      return false
-  }
-
-  
- 
+   
 } 

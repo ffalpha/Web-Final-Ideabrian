@@ -1,6 +1,6 @@
-export class selector1  {
+export class selector  {
   
-  static test(aa) {
+  static select(aa) {
       if(aa==1){
          return "Agriculture and cropes"; 
 

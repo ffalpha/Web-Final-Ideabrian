@@ -1,5 +1,3 @@
-<app-navbar></app-navbar>
-
 <div class="mainContainer">
 
     <div class="buttonHolder">
@@ -26,10 +24,9 @@
         <div class="postGrandpa">
             <div class="postContainersParent">
                 <ais-hits>
-                    <ng-template let-hits=" hits  ">
+                    <ng-template let-hits="hits">
                         <div *ngFor="let hit of hits">
-                            <app-post [name]="hit.name" [url]="hit.profilePic" [content]="hit.body" [date]="hit.date" [solved]="hit.status" [id]="hit.objectId" [title]="hit.title" [uuid]="hit.uuid" [category]="hit.category">
-                            </app-post>
+                            <app-post [name]="hit.name" [url]="hit.profilePic" [content]="hit.body" [date]="hit.date" [solved]="hit.status" [id]="hit.objectId" [title]="hit.title" [uuid]="hit.uuid" [category]="hit.category"></app-post>
                         </div>
                     </ng-template>
                 </ais-hits>

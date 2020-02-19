@@ -31,7 +31,7 @@ export class ReadMorePageComponent implements OnInit {
   path: string;
 
   //select answer related 
-  haveToSolve:boolean; uid:string; answer:number;
+  haveToSolve:boolean; uid:string; answer:number; 
 
   constructor(
     // public  spy: jasmine.Spy,
@@ -52,8 +52,7 @@ export class ReadMorePageComponent implements OnInit {
     this.uuid = this.route.snapshot.paramMap.get("uuid"); 
     this.docRef = this.afs.collection(this.databaseName).doc(this.uuid);
 
-    
-
+ 
   }
 
   getDate() {
@@ -97,16 +96,32 @@ export class ReadMorePageComponent implements OnInit {
             arr_names[a - 1] = this.documentObject["comments"][a];
           }
 
-          //set the solve button visibility status 
-          const user = JSON.parse(localStorage.getItem('user'));
-          const localuid = user['uid'].replace('"', "").replace('"', "")   
-          if ((this.uid=== localuid ) && (! (this.solved ==="solved") ) ){
+ 
+          //set the solve button visibility status  
+          var user1 = JSON.parse(localStorage.getItem('user'));
+          const localUID = user1['uid'].replace('"', "").replace('"', "")   
+          console.log('Local UID' , localUID)
+          console.log('DB UID', this.uid)
+
+          console.log('Solved status', this.solved)
+
+          
+          if ((this.uid=== localUID ) && (! (this.solved ==="solved") ) ){
+ 
             this.haveToSolve = true;
             console.log("I have to select answer ", this.solved ); 
           }else{
             this.haveToSolve = false;
             console.log("I am not the owner of this question ");
-          } 
+          }  
+
+          /*
+          if(this.solved ==="solved"){
+            this.solvedStatus = true;
+          }else{
+            this.solvedStatus = false;
+          }
+*/
  
           this.comments = arr_names;
 
