@@ -1,14 +1,14 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { FormGroup, FormControl } from "@angular/forms";
-import { selector1 } from "../../catagory";
+import { selector } from "../../common/catagory";
 
 //file upload related imports
 import { AngularFireStorage } from "@angular/fire/storage";
-import { forkJoin, from } from "rxjs";
+import { forkJoin } from "rxjs";
 import { mergeMap, map } from "rxjs/operators";
 import { AngularFirestore } from "@angular/fire/firestore";
-import {Router} from '@angular/router';
+import { Router} from '@angular/router';
 
 //UUID for documnet id's
 import * as uuid from "uuid";
@@ -22,13 +22,13 @@ import { UserDetailsService} from "../../common/user-details.service";
 })
 export class PostWriterComponent implements OnInit {
 
-  private editorContent;
-  private editorForm: FormGroup;
-  private postCatagory;
-  private postCatagoryLovercase;
-  private imageID;
-  private databaseName;
-  private userObject;
+  private editorContent; // inner HTML in editor window
+  private editorForm: FormGroup; //main form with title , description  
+  private postCatagory; //podt category 
+  private postCatagoryLovercase; //usefull in frontend title 
+  private imageID;//<--not used here
+  private databaseName; // collection name to add document 
+  private userObject;// To store the users details
 
 
 
@@ -64,33 +64,30 @@ export class PostWriterComponent implements OnInit {
     });
 
     if (this.route.snapshot.paramMap.get("id") != null) {
+     
+      /*
       console.log("ID is not null");
       console.log(parseInt(this.route.snapshot.paramMap.get("id")));
-      console.log(
-        selector1
-          .test(parseInt(this.route.snapshot.paramMap.get("id")))
-          .toLowerCase()
-      );
+      console.log(selector.select (parseInt(this.route.snapshot.paramMap.get("id"))).toLowerCase());
+      */
+
       var id = parseInt(this.route.snapshot.paramMap.get("id"));
-      this.postCatagory = selector1.test(id);
+      this.postCatagory = selector.select(id);
       this.databaseName = this.postCatagory.replace(" ", "_").replace(" ", "_");
-      this.postCatagoryLovercase = this.postCatagory.toLowerCase();
-      if ("Health_and_fitness" === this.databaseName) {
-        console.log("same");
-      } else {
-        console.log("not same");
-      }
+      this.postCatagoryLovercase = this.postCatagory.toLowerCase(); //used in  the title 
+     
     } else {
       this.postCatagory = "error";
+      console.log("error occured while selecting a category ")
     }
   
   }  
 
 
- //file upload related 
+  //file upload related 
   onClickMe() {
-    const realFileBtn = document.getElementById("real-file");
-    realFileBtn.click();
+    const realFileBtn = document.getElementById("real-file"); //mapping the file button on frontend to the real upload button
+    realFileBtn.click();//trigger real file upload button's click event 
   }
 
   validateFile(e) {
@@ -102,22 +99,21 @@ export class PostWriterComponent implements OnInit {
       return message;
     } else {
       if (
-        !(
+        !( //supported file types 
           file.type == "image/jpeg" ||
           file.type == "image/jpg" ||
           file.type == "image/png"
         )
       ) {
         var message = "Selected file is not a image";
-        console.log(message);
         return message;
       }
     }
     return "fine";
   }
 
-  onFileChanged(e) {
-    const customTxt = document.getElementById("custom-text");
+  onFileChanged(e) { //change the text according to the file uploaded 
+    const customTxt = document.getElementById("custom-text");//customTxt is the label associzted with the file upload
     const realFileBtnValue = (document.getElementById(
       "real-file"
     ) as HTMLInputElement).value;
@@ -139,9 +135,6 @@ export class PostWriterComponent implements OnInit {
         //remove files which failed the validation
         (document.getElementById("real-file") as HTMLInputElement).value = null;
         customTxt.innerHTML = validityOfTheFile.toLowerCase();
-        console.log(
-          (document.getElementById("real-file") as HTMLInputElement).value
-        );
       }
     } else {
       customTxt.innerHTML = "No file choosen yet.";
@@ -222,7 +215,6 @@ export class PostWriterComponent implements OnInit {
             uid: uid ,//uid of the writer
             comments: {0 : 0}
           };
- 
 
           this.afs.collection(this.databaseName).doc(uniqueID).set(post); //other than above mentioned errors others look good
           const urlPart = parseInt(this.route.snapshot.paramMap.get("id"));
@@ -230,7 +222,6 @@ export class PostWriterComponent implements OnInit {
           //navigate to the search page 
           this.router.navigate([`a/${urlPart}`]);
         });
-        
         
       }
     );

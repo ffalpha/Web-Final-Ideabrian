@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'; 
 import { environment } from '../../../environments/environment';
 import { ActivatedRoute , Router} from '@angular/router'
-import { selector1 } from '../../catagory';
+import { selector } from '../../common/catagory';
 
 @Component({
   selector: 'app-algolia-posts',
@@ -22,7 +22,7 @@ export class AlgoliaPostsComponent implements OnInit {
     if(this.route.snapshot.paramMap.get('id')!=null){ 
       //get database name using URL
       this.id = parseInt(this.route.snapshot.paramMap.get('id'));
-      this.postCatagory = selector1.test(this.id);
+      this.postCatagory = selector.test(this.id);
       this.postCatagoryLowecase = this.postCatagory.toLowerCase();
       this.databaseName = this.postCatagory.replace(" ","_").replace(" ","_");
       this.routerLink = "../../newPost/" + this.id;
