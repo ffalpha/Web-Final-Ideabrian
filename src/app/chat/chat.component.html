@@ -64,7 +64,6 @@
                 />
                 </div>
                 <button id = "delete" style="float:right"
-                      status="danger"
                       size="tiny"
                       class="delete-btn"
                       (click)="deleteChat(chat.id)"
@@ -94,14 +93,14 @@
                     <p class="text-small mb-0 text-muted">
                       {{chat.message}}
                     </p>
-                     <!-- Image -->
+                     <!-- Image  (dis[lay image])  -->
                      <div
-                     *ngIf="chat.type == 'file'"
+                     *ngIf="chat.type == 'file'" 
                      class="p-3 mb-2 bg-light text-white"
                    >
                    <img
                       id="image"
-                      src="{{ chat.URL }}"
+                      src="{{ chat.URL }}"   
                       style="max-width:250px;"
                     />
                     </div>
