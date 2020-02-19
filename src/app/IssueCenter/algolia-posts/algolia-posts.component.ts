@@ -19,31 +19,24 @@ export class AlgoliaPostsComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
   ngOnInit() {
     
-    if(this.route.snapshot.paramMap.get('id')!=null){ 
-      //get database name using URL
+    if(this.route.snapshot.paramMap.get('id')!=null){
+      console.log("ID is not null");
+      console.log(parseInt(this.route.snapshot.paramMap.get('id')));
+      console.log(selector.select(parseInt(this.route.snapshot.paramMap.get('id'))).toLowerCase());
+      
       this.id = parseInt(this.route.snapshot.paramMap.get('id'));
-      this.postCatagory = selector.test(this.id);
+      
+      this.postCatagory = selector.select(this.id);
       this.postCatagoryLowecase = this.postCatagory.toLowerCase();
       this.databaseName = this.postCatagory.replace(" ","_").replace(" ","_");
-      this.routerLink = "../../newPost/" + this.id;
+      this.routerLink = "../../newPost/"+this.id;
  
     }else{
       this.postCatagory = "error";
     }
   } 
-
-   //there will be no search results as default
-   showResults = true ;
-
-   //change search results showing status 
-   searchChanged(query){
-     if(query.length){
-       this.showResults = true;
-     }else{
-       this.showResults = false;
-     }
-
-    }
+   
+  
 
   
    
