@@ -12,6 +12,7 @@ export interface Chat {
   profilepic: string;
   uid: string;
   time:string;
+  
 }
 
 export interface User {
@@ -33,12 +34,13 @@ export class ChatServiceService {
   user:any;
   chatCollection:AngularFirestoreCollection<Chat>;
   userCollection:AngularFirestoreCollection<User>;
+  afs:any
   constructor(
     private firestore: AngularFirestore,
     private usersd:UserDetailsService
   ) {
 
-
+//user details
     this.usersd.getUser().subscribe(async doc=>{
       this.user =await doc.data();
       console.log(JSON.stringify(this.user,null,2));
@@ -56,8 +58,9 @@ export class ChatServiceService {
       from: this.user['email'],
       uid:this.user['uid'],
       message: chatObj["Msg"],
-      photoUrl: this.user['photoURL'],
-      createdAt: new Date()
+      photoURL: this.user['photoURL'],
+      createdAt: new Date(),
+      type : 'text'
     };
    
     await this.firestore.collection("chats").add(chat);
@@ -65,8 +68,9 @@ export class ChatServiceService {
   
 }
 
-
+//get chat data from database
   getallChats(){
+    //firebase api
     this.chatCollection= this.firestore.collection('chats',ref => ref.orderBy('createdAt', 'asc'))
     return this.chatCollection.snapshotChanges().pipe(
       map(actions => {

@@ -45,23 +45,46 @@
         <div class="px-4 py-5 chat-box bg-white">
           <div *ngFor="let chat of chats | async">
             <div *ngIf="chat.uid == usersUID; else elseBlock">
-              <!-- Reciever Message-->
+              <!-- sender  Message-->
               <div class="media w-50 ml-auto mb-3">
                 <div class="media-body">
                   <div class="bg-primary rounded py-2 px-3 mb-2">
                     <p class="text-small mb-0 text-white">
                       {{chat.message}}
-                      
                     </p>
+                    <!-- image -->
+                    <div
+                    *ngIf="chat.type == 'file'"
+                    class="p-3 mb-2 bg-light text-white"
+                  >
+                  <img
+                  id="image"
+                  src="{{ chat.URL }}"
+                  style="max-width:250px;"
+                />
+                </div>
+                <button id = "delete" style="float:right"
+                      status="danger"
+                      size="tiny"
+                      class="delete-btn"
+                      (click)="deleteChat(chat.id)"
+                    >
+                    <i class="fa fa-trash"></i>
+                    </button>
                   </div>
                   <p class="small text-muted ar">{{chat.createdAt.toDate() | date:'yyyy/MM/dd h:mm:ss a'}}</p>
                 </div>
               </div>
             </div>
+            <!-- Recieve message -->
             <ng-template #elseBlock
-              ><div class="media w-50 mb-3">
+              >
+              
+              <p class="small text-muted al">{{chat.from}}</p>
+              <div class="media w-50 mb-3">
+                
                 <img
-                  src="{{chat.photoUrl}}"
+                  src="{{chat.photoURL}}"
                   alt="user"
                   width="50"
                   class="rounded-circle"
@@ -71,11 +94,21 @@
                     <p class="text-small mb-0 text-muted">
                       {{chat.message}}
                     </p>
-                  </div>
+                     <!-- Image -->
+                     <div
+                     *ngIf="chat.type == 'file'"
+                     class="p-3 mb-2 bg-light text-white"
+                   >
+                   <img
+                      id="image"
+                      src="{{ chat.URL }}"
+                      style="max-width:250px;"
+                    />
+                    </div>
+                  </div>                  
                   <p class="small text-muted al ">{{chat.createdAt.toDate() | date:'yyyy/MM/dd h:mm:ss a'}}</p>
                 </div>
-              </div></ng-template
-            >
+              </div></ng-template>
           </div>
         </div>
   
@@ -89,8 +122,15 @@
               aria-describedby="button-addon2"
               class="form-control rounded-0 border-0 py-4 bg-light"
             />
+           
             
             <div class="input-group-append">
+              <label for="fileInput"> 
+                UploadImage:
+                <img id="icon" src="https://image.freepik.com/free-icon/upload-arrow_318-26670.jpg">
+              </label>&nbsp;&nbsp;
+              <input id="fileInput" type="file" (change)="uploadFile($event)"
+              accept=".png,.jpg">
               <button id="button-addon2" type="submit" class="btn btn-link">
                 <i class="fa fa-paper-plane"></i>
               </button>

@@ -160,8 +160,11 @@
          <h2>Contact Us</h2>
           <br>
          
+          <!-- <div class="form-group"><br> -->
           <form action="index.html" method="post"> 
-           <input type="email" name="email" class="text-input contact-input" placeholder="Your e-mail here....."><br> 
+           <input type="email" name="email" class="text-input contact-input form-control" placeholder="Your e-mail here.....">
+           <div class="text-danger" *ngIf="isSubmitted && !! formControls.imageUrl.errors?.required">This field is required.</div>
+           <br> 
            <textarea name="message" class="text-input contact-input" placeholder="Your message......."></textarea> <br>
            <div style="text-align: center">
            <button type="submit" class="btn btn-success contact-btn">
