@@ -46,7 +46,12 @@ export class ChatComponent implements OnInit {
 
     //send message
   public async sendmsg(formData:Chat){
+    if(!this.chatforum.invalid){
     await this.chatservice.sendmessage(formData);  
+    }
+    else{
+      alert(" pleas type something here!!");
+    }
   }
 
 
